@@ -181,6 +181,7 @@ typedef class orthogonal orthogonal;
 typedef class vector_hashing vector_hashing;
 typedef class unusual_model unusual_model;
 typedef class grassmann grassmann;
+typedef class subspaces subspaces;
 typedef class grassmann_embedded grassmann_embedded;
 typedef class hermitian hermitian;
 typedef class incidence_structure incidence_structure;
@@ -2616,27 +2617,18 @@ public:
 	finite_field *F;
 	INT *base_cols;
 	INT *coset;
-	grassmann *G; // an array of n+1 grassmannians
-
+	grassmann **G; // an array of n+1 grassmannians
 	subspaces();
 	~subspaces();
 	void init(INT n, finite_field *F, INT verbose_level);
 	INT nb_of_subspaces(INT verbose_level);
 	INT nb_points_covered(INT verbose_level);
-	void points_covered(INT *the_points, INT verbose_level);
 	void unrank_INT_here(INT *Mtx, INT rk, INT verbose_level);
-	INT rank_INT_here(INT *Mtx, INT verbose_level);
+	INT rank_INT_here(INT *Mtx, INT k, INT verbose_level);
 	void unrank_INT(INT rk, INT verbose_level);
 	INT unrank_k(INT rk, INT verbose_level);// determine dimension k from rk
-	INT rank_INT(INT verbose_level);
-	void unrank_longinteger_here(INT *Mtx, longinteger_object &rk, INT verbose_level);
-	void rank_longinteger_here(INT *Mtx, longinteger_object &rk, INT verbose_level);
-	void unrank_longinteger(longinteger_object &rk, INT verbose_level);
-	void rank_longinteger(longinteger_object &r, INT verbose_level);
-	void print();
-	INT dimension_of_join(INT rk1, INT rk2, INT verbose_level);
-	void unrank_INT_here_and_extend_basis(INT *Mtx, INT rk, INT verbose_level);
-		// Mtx must be n x n
+	INT rank_INT(INT k, INT verbose_level);
+	void print(INT k);
 };
 
 // ####################################################################################

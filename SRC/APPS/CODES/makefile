@@ -7,12 +7,12 @@ LIB = \
 	$(SRC)/LIB/SNAKES_AND_LADDERS/libsnakesandladders.a  \
 	$(SRC)/LIB/ACTION/libaction.a \
 	$(SRC)/LIB/INCIDENCE/libincidence.a \
-	$(SRC)/LIB/GALOIS/libgalois.a 
+	$(SRC)/LIB/GALOIS/libgalois.a
 LFLAGS = -lm
 
 
 
-all: codes.out 
+all: codes.out
 
 codes.out:  codes.C code_generator.o ;
 	$(DISCRETA_CPP)  codes.C code_generator.o $(CPPFLAGS) $(LIB) $(LFLAGS) -o $@
@@ -25,5 +25,3 @@ clean:
 
 
 code_generator.o: code_generator.C; $(DISCRETA_CPP) $(CPPFLAGS) -c code_generator.C -o $@
-
-

@@ -1,10 +1,10 @@
 DISCRETA_CPP = /usr/bin/g++
 DISCRETA_CC = /usr/bin/gcc
 CPPFLAGS = -Wall
-LIB = 
+LIB =
 LFLAGS = -lm
 CPP_PREFIX=a_
-UNIX_TO_DOS = ~/bin/unix2dos -n 
+UNIX_TO_DOS = ~/bin/unix2dos -n
 
 MODULES = \
 	INT_matrix.o \
@@ -38,6 +38,7 @@ MODULES = \
 	graph_layer.o \
 	graph_node.o \
 	grassmann.o \
+	subspaces.o \
 	grassmann_embedded.o \
 	hermitian.o \
 	hjelmslev.o \
@@ -118,6 +119,7 @@ gl_classes.o: gl_classes.C ; $(DISCRETA_CPP) $(CPPFLAGS) -c gl_classes.C -o $@
 graph_layer.o: graph_layer.C; $(DISCRETA_CPP) $(CPPFLAGS) -c graph_layer.C -o $@
 graph_node.o: graph_node.C; $(DISCRETA_CPP) $(CPPFLAGS) -c graph_node.C -o $@
 grassmann.o: grassmann.C; $(DISCRETA_CPP) $(CPPFLAGS) -c grassmann.C -o $@
+subspaces.o: subspaces.C; $(DISCRETA_CPP) $(CPPFLAGS) -c subspaces.C -o $@
 grassmann_embedded.o: grassmann_embedded.C; $(DISCRETA_CPP) $(CPPFLAGS) -c grassmann_embedded.C -o $@
 hermitian.o: hermitian.C; $(DISCRETA_CPP) $(CPPFLAGS) -c hermitian.C -o $@
 hjelmslev.o: hjelmslev.C; $(DISCRETA_CPP) $(CPPFLAGS) -c hjelmslev.C -o $@
@@ -195,6 +197,7 @@ cpp:
 	$(UNIX_TO_DOS) graph_layer.C $(CPP_PREFIX)graph_layer.cpp
 	$(UNIX_TO_DOS) graph_node.C $(CPP_PREFIX)graph_node.cpp
 	$(UNIX_TO_DOS) grassmann.C $(CPP_PREFIX)grassmann.cpp
+	$(UNIX_TO_DOS) subspaces.C $(CPP_PREFIX)subspaces.cpp
 	$(UNIX_TO_DOS) grassmann_embedded.C $(CPP_PREFIX)grassmann_embedded.cpp
 	$(UNIX_TO_DOS) hermitian.C $(CPP_PREFIX)hermitian.cpp
 	$(UNIX_TO_DOS) hjelmslev.C $(CPP_PREFIX)hjelmslev.cpp
@@ -234,5 +237,3 @@ cpp:
 	$(UNIX_TO_DOS) vector_hashing.C $(CPP_PREFIX)vector_hashing.cpp
 	$(UNIX_TO_DOS) galois.h ../WINDOWS/galois.h
 	mv $(CPP_PREFIX)* ../WINDOWS
-
-

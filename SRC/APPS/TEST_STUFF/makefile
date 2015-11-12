@@ -12,10 +12,10 @@ LFLAGS = -lm
 
 
 
-all: teststuff
+all: teststuff.out
 
-teststuff: test_stuff.C;
-	$(DISCRETA_CPP) test_stuff.C $(CPPFLAGS) $(LIB) $(LFLAGS) -o $@
+teststuff.out: test_stuff.C $(SRC)/LIB/GALOIS/subspaces.C;
+	$(DISCRETA_CPP) test_stuff.C $(SRC)/LIB/GALOIS/subspaces.C $(CPPFLAGS) $(LIB) $(LFLAGS) -o $@
 
 
 clean:
