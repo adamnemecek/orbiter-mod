@@ -1,0 +1,236 @@
+sub.C version 5/18/2009
+-n 7
+-q 2
+-d 3
+-k1	1
+n=7
+klist=( 1 )q=2
+d=3
+sub_generator::init
+sub_generator::init calling init_matrix_group
+action::init_projective_group
+n=3 q=2
+f_semilinear=0
+f_basis=1
+action::init_projective_group before M->init_projective_group
+matrix_group::init_projective_group
+n=3
+q=2
+f_semilinear=0
+matrix_group::compute_elt_size
+bits_per_digit = 1
+bits_extension_degree = 0
+bits_per_elt = 9
+char_per_elt = 2
+elt_size_INT_half = 9
+elt_size_INT = 18
+matrix_group::compute_elt_size done
+matrix_group::init_projective_group elt_size_INT = 18
+matrix_group::allocate_data
+matrix_group::allocate_data done
+matrix_group::setup_page_storage
+matrix_group::setup_page_storage calling Elts->init()
+matrix_group::setup_page_storage calling GL_one()
+matrix_group::setup_page_storage calling Elts->store()
+identity element stored, hdl = 0
+matrix_group::setup_page_storage done
+matrix_group::init_projective_group before init_base
+matrix_group::init_base
+matrix_group::init_base before init_base_projective
+matrix_group::init_base after init_base_projective
+matrix_group::init_base done
+matrix_group::init_projective_group after init_base
+matrix_group::init_projective_group finished
+action::init_projective_group low_level_point_size=3
+action::init_projective_group label=PGL_3_2
+action::setup_linear_group_from_strong_generators setting up a basis
+action::setup_linear_group_from_strong_generators before init_matrix_group_strong_generators_builtin
+action::init_matrix_group_strong_generators_builtin
+action::init_matrix_group_strong_generators_builtin computing strong generators builtin group
+n=3
+q=2
+p=2
+e=1
+f_semilinear=0
+strong_generators_for_projective_linear_group
+strong_generators_for_projective_linear_group done
+strong_generators::init_from_data
+strong_generators::init_from_data done
+action::init_matrix_group_strong_generators_builtin computing strong generators builtin group finished
+action::setup_linear_group_from_strong_generators after init_matrix_group_strong_generators_builtin
+action::setup_linear_group_from_strong_generators before S->compute_base_orbits_known_length
+sims::compute_base_orbits_known_length: ( 7, 6, 4 )
+verbose_level=3
+sims::compute_base_orbits_known_length computing level 2
+sims::compute_base_orbits_known_length level 2 base point 2 orbit length 4 has been computed
+sims::compute_base_orbits_known_length computing level 1
+sims::compute_base_orbits_known_length level 1 base point 1 orbit length 6 has been computed
+sims::compute_base_orbits_known_length computing level 0
+sims::compute_base_orbits_known_length level 0 base point 0 orbit length 7 has been computed
+sims::compute_base_orbits_known_length done
+action::setup_linear_group_from_strong_generators before init_sims
+action::init_sims action PGL_3_2 base_len = 3
+action::init_base_from_sims, base length 3
+action::init_sims done
+action::setup_linear_group_from_strong_generators after init_sims
+action::init_projective_group, finished setting up PGL_3_2, a permutation group of degree 7 and of order 168
+sub_generator::init finished with init_matrix_group
+sub_generator::init calling init_matrix_group_strong_generators_builtin_projective
+action::init_matrix_group_strong_generators_builtin
+action::init_matrix_group_strong_generators_builtin computing strong generators builtin group
+n=3
+q=2
+p=2
+e=1
+f_semilinear=0
+strong_generators_for_projective_linear_group
+generators for entries in the last row (e=1):
+generators for entries in the last row (e=1):
+generators for swaps along the diagonal:
+generators for swaps along the diagonal:
+strong_generators_for_projective_linear_group done
+strong_generators::init_from_data
+strong_generators::init
+strong_generators::init done
+strong_generators::init_from_data generator 0: 
+1 0 0 
+0 1 0 
+1 0 1 
+strong_generators::init_from_data generator 1: 
+1 0 0 
+0 1 0 
+0 1 1 
+strong_generators::init_from_data generator 2: 
+1 0 0 
+0 0 1 
+0 1 0 
+strong_generators::init_from_data generator 3: 
+0 1 0 
+1 0 0 
+0 0 1 
+strong_generators::init_from_data done
+action::init_matrix_group_strong_generators_builtin computing strong generators builtin group finished
+sub_generator::init finished with init_matrix_group_strong_generators_builtin_projective
+sub_generator::init group set up
+arc_generator::init creating action on sets of subspaces
+subspaces::init n=3 q=2
+Allocating 4 grassmanians
+Done allocating 4 grassmanians
+grassmann::init n=3 k=0 q=2
+grassmann::init n=3 k=1 q=2
+grassmann::init n=3 k=2 q=2
+grassmann::init n=2 k=1 q=2
+grassmann::init n=3 k=3 q=2
+grassmann::init n=2 k=2 q=2
+grassmann::init n=1 k=1 q=2
+action_on_subspaces::init
+n=3
+q=2
+action_on_subspaces::init done
+action::induced_action_on_subspaces f_induce_action=0
+the old_action PGL_3_2 has base_length = 3 and degree 7
+action::induced_action_on_subspaces before subaction = A
+action::induced_action_on_subspaces action is of linear type
+action::induced_action_on_subspaces A->type_G == matrix_group_t
+action::induced_action_on_subspaces before init_function_pointers_induced_action
+action::induced_action_on_subspaces before allocate_element_data
+action::induced_action_on_subspaces finished, created action PGL_3_2_subspaces_3_2
+make_element_size=9
+ACTION PGL_3_2_subspaces_3_2 degree=0 of type action_on_subspaces_t->matrix_group_t low_level_point_size=0 f_has_sims=0 f_has_strong_generators=0
+action Aonsets created: ACTION PGL_3_2_subspaces_3_2 degree=0 of type action_on_subspaces_t->matrix_group_t low_level_point_size=0 f_has_sims=0 f_has_strong_generators=0
+A->f_has_strong_generators=1
+generator::init
+generator::init sz = 7
+generator::init A->degree=7
+generator::init A2->degree=0
+generator::init sz = 7
+generator::init action A:
+ACTION PGL_3_2 degree=7 of type matrix_group_t low_level_point_size=3 f_has_sims=1 f_has_strong_generators=1 linear of dimension 3 base: ( 0, 1, 2 ) order 168 = ( 7, 6, 4 )
+generator::init action A2:
+ACTION PGL_3_2_subspaces_3_2 degree=0 of type action_on_subspaces_t->matrix_group_t low_level_point_size=0 f_has_sims=0 f_has_strong_generators=0
+generator::init group order is 168
+generator::init sz = 7
+generator::init allocating S of size 7
+generator::init allocating Elt_memory
+generator::init done
+sub_generator::init group set up, calling gen->init_check_func
+sub_generator::init group set up, calling gen->init_early_test_func
+sub_generator::init group set up, calling gen->init_oracle
+generator::init_oracle
+generator::init_oracle done
+sub_generator::init group set up, calling gen->root[0].init_root_node
+oracle::init_root_node() initializing root node
+storing strong generators
+init_root_node done
+generator::main
+generator::main  depth = 7
+f_W = 0
+f_w = 0
+verbose_level = 6
+generator::main target_depth=7
+generator::main:  calling extend_level 0
+we will store schreier vectors for this level
+##################################################################################################
+
+generator::extend_level constructing nodes at depth 1
+verbose_level=4
+generator::extend_level 0 calling downstep
+##################################################################################################
+
+downstep depth 0 verbose_level=3
+Time 
+clock ticks per second = 100
+0:00 : Level 0 Node 0 = 0 / 1 :  Downstep node starting
+oracle::downstep
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  : Downstep for {  }_{7 * 6 * 4 = 168} verbose_level=1
+oracle::downstep before downstep_orbits
+oracle::downstep_orbits we are trying to find an invariant subset
+We did not find an invariant subset
+oracle::downstep after downstep_orbits
+oracle::downstep before downstep_orbit_test_and_schreier_vector
+oracle::downstep after downstep_orbit_test_and_schreier_vector
+oracle::downstep before downstep_implicit_fusion
+oracle::downstep after downstep_implicit_fusion
+oracle::downstep before find_extensions
+oracle::downstep after find_extensions
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  : after test_orbits and find_extensions, we have 0 extensions
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  : found 0 extensions (out of 0 orbits) with 0 points 
+oracle::downstep done
+
+Downstep node finished :  found 0 live points in 0 orbits : oracle::print_extensions node=0 at depth 0 degree=0
+Node 0, the extensions are
+i : pt : orbit_len : type : to where
+done with node 0
+progress: 0. 0 % 
+generator::extend_level after downstep
+generator::extend_level calling upstep
+generator::upstep
+verbose_level = 3
+##################################################################################################
+
+extension step depth 0
+verbose_level=3
+f_indicate_not_canonicals=0
+with 0 extension nodes
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  Upstep : 
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  **** Upstep finished with 0 new orbits and 0 fusion nodes. We now have 0 nodes at level 1, progress: -92233720368547758.-8 % 
+    0 :          0 :          0 :          0 :          0
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  Upstep : progress: -92233720368547758.-8 % 
+generator::extend_level after upstep
+generator::housekeeping verbose_level=5
+##################################################################################################
+Found 0 orbits at depth 1
+0 : 1 orbits
+1 : 0 orbits
+total: 1
+() average is 9 + 0 / 0
+# 1
+-1 0 1 in 0:00
+() average is 9 + 0 / 0
+
+# in action PGL_3_2
+generator_housekeeping not writing files
+generator_housekeeping not writing tree
+generator::housekeeping done
+***************** The End **********************
+0:00

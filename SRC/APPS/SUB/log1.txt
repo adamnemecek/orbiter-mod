@@ -1,0 +1,447 @@
+jayant@aragorn:~/Dropbox/ORBITER/SRC/APPS/SUB$ ./sub.out -n 7 -d 3 -q 2 -klist 1 1 -v 20
+sub.C version 5/18/2009
+-n 7
+-d 3
+-q 2
+-k1	1
+n=7
+klist=( 1 )q=2
+d=3
+sub_generator::init
+sub_generator::init calling init_matrix_group
+action::init_projective_group
+n=3 q=2
+f_semilinear=0
+f_basis=1
+action::init_projective_group before M->init_projective_group
+matrix_group::init_projective_group
+n=3
+q=2
+f_semilinear=0
+matrix_group::compute_elt_size
+bits_per_digit = 1
+bits_extension_degree = 0
+bits_per_elt = 9
+char_per_elt = 2
+elt_size_INT_half = 9
+elt_size_INT = 18
+matrix_group::compute_elt_size done
+matrix_group::init_projective_group elt_size_INT = 18
+matrix_group::allocate_data
+matrix_group::allocate_data done
+matrix_group::setup_page_storage
+matrix_group::setup_page_storage calling Elts->init()
+page_storage::init, verbose_level=14
+warning: raising entry_size to sizeof(INT) = 8
+page_storage::entry_size=8
+(INT)sizeof(INT)=8
+page_length_log = 20
+page_length = 1048576
+page_size = 8388608
+page_storage::init page_size too big
+the maximum page size in BYTE is 5242880
+page_storage::entry_size=8
+(INT)sizeof(INT)=8
+page_length_log = 19
+page_length = 524288
+page_size = 4194304
+page_size is OK
+allocation_table_length=65537
+allocating pages / allocation_tables
+allocating page[0] of size 4194304
+allocating allocation_tables[0] of size 65537
+pages[0]/allocation_tables[0] allocated
+matrix_group::setup_page_storage calling GL_one()
+matrix_group::setup_page_storage calling Elts->store()
+identity element stored, hdl = 0
+matrix_group::setup_page_storage done
+matrix_group::init_projective_group before init_base
+matrix_group::init_base
+matrix_group::init_base before init_base_projective
+matrix_group::init_base_projective verbose_level=14
+matrix_group::init_base_projective degree=7
+matrix_group_base_len_projective_group: n=3 q=2 f_semilinear=0 base_len = 3
+matrix_group::init_base_projective base_len=3
+matrix_group::init_base_projective before projective_matrix_group_base_and_orbits
+projective_matrix_group_base_and_orbits
+projective_matrix_group_base_and_orbits transversal 0 of length 7
+projective_matrix_group_base_and_orbits before PG_element_modified_not_in_subspace_perm
+projective_matrix_group_base_and_orbits after PG_element_modified_not_in_subspace_perm
+projective_matrix_group_base_and_orbits transversal 1 of length 6
+projective_matrix_group_base_and_orbits before PG_element_modified_not_in_subspace_perm
+projective_matrix_group_base_and_orbits after PG_element_modified_not_in_subspace_perm
+projective_matrix_group_base_and_orbits transversal 2 of length 4
+projective_matrix_group_base_and_orbits before PG_element_modified_not_in_subspace_perm
+projective_matrix_group_base_and_orbits after PG_element_modified_not_in_subspace_perm
+projective_matrix_group_base_and_orbits base: ( 0, 1, 2 )
+projective_matrix_group_base_and_orbits transversal_length: ( 7, 6, 4 )
+projective_matrix_group_base_and_orbits done
+matrix_group::init_base_projective: finished
+matrix_group::init_base after init_base_projective
+matrix_group::init_base done
+matrix_group::init_projective_group after init_base
+matrix_group::init_projective_group finished
+action::init_projective_group low_level_point_size=3
+action::init_projective_group label=PGL_3_2
+action::setup_linear_group_from_strong_generators setting up a basis
+action::setup_linear_group_from_strong_generators before init_matrix_group_strong_generators_builtin
+action::init_matrix_group_strong_generators_builtin
+action::init_matrix_group_strong_generators_builtin computing strong generators builtin group
+n=3
+q=2
+p=2
+e=1
+f_semilinear=0
+strong_generators_for_projective_linear_group
+generators for entries in the last row (e=1):
+generators for entries in the last row (e=1):
+generators for swaps along the diagonal:
+generators for swaps along the diagonal:
+strong_generators_for_projective_linear_group done
+strong_generators::init_from_data
+strong_generators::init
+strong_generators::init done
+strong_generators::init_from_data generator 0:
+1 0 0
+0 1 0
+1 0 1
+strong_generators::init_from_data generator 1:
+1 0 0
+0 1 0
+0 1 1
+strong_generators::init_from_data generator 2:
+1 0 0
+0 0 1
+0 1 0
+strong_generators::init_from_data generator 3:
+0 1 0
+1 0 0
+0 0 1
+strong_generators::init_from_data done
+action::init_matrix_group_strong_generators_builtin computing strong generators builtin group finished
+action::setup_linear_group_from_strong_generators after init_matrix_group_strong_generators_builtin
+action::setup_linear_group_from_strong_generators before S->compute_base_orbits_known_length
+sims::compute_base_orbits_known_length: ( 7, 6, 4 )
+verbose_level=17
+sims::compute_base_orbits_known_length computing level 2
+sims::compute_base_orbits_known_length level 2 base point 2 orbit length 4 has been computed
+sims::compute_base_orbits_known_length computing level 1
+sims::compute_base_orbits_known_length level 1 base point 1 orbit length 6 has been computed
+sims::compute_base_orbits_known_length computing level 0
+sims::compute_base_orbits_known_length level 0 base point 0 orbit length 7 has been computed
+sims::compute_base_orbits_known_length done
+action::setup_linear_group_from_strong_generators before init_sims
+action::init_sims action PGL_3_2 base_len = 3
+action::init_base_from_sims, base length 3
+action::init_sims done
+action::setup_linear_group_from_strong_generators after init_sims
+action::init_projective_group, finished setting up PGL_3_2, a permutation group of degree 7 and of order 168
+sub_generator::init finished with init_matrix_group
+sub_generator::init calling init_matrix_group_strong_generators_builtin_projective
+action::init_matrix_group_strong_generators_builtin
+action::init_matrix_group_strong_generators_builtin computing strong generators builtin group
+n=3
+q=2
+p=2
+e=1
+f_semilinear=0
+strong_generators_for_projective_linear_group
+generators for entries in the last row (e=1):
+generators for entries in the last row (e=1):
+generators for swaps along the diagonal:
+generators for swaps along the diagonal:
+strong_generators_for_projective_linear_group done
+strong_generators::init_from_data
+strong_generators::init
+strong_generators::init done
+strong_generators::init_from_data generator 0:
+1 0 0
+0 1 0
+1 0 1
+strong_generators::init_from_data generator 1:
+1 0 0
+0 1 0
+0 1 1
+strong_generators::init_from_data generator 2:
+1 0 0
+0 0 1
+0 1 0
+strong_generators::init_from_data generator 3:
+0 1 0
+1 0 0
+0 0 1
+strong_generators::init_from_data done
+action::init_matrix_group_strong_generators_builtin computing strong generators builtin group finished
+sub_generator::init finished with init_matrix_group_strong_generators_builtin_projective
+sub_generator::init group set up
+arc_generator::init creating action on sets of subspaces
+subspaces::init n=3 q=2
+Allocating 4 grassmanians
+Done allocating 4 grassmanians
+grassmann::init n=3 k=0 q=2
+grassmann::init n=3 k=1 q=2
+grassmann::init n=3 k=2 q=2
+grassmann::init n=2 k=1 q=2
+grassmann::init n=3 k=3 q=2
+grassmann::init n=2 k=2 q=2
+grassmann::init n=1 k=1 q=2
+action_on_subspaces::init
+n=3
+q=2
+action_on_subspaces::init done
+action::induced_action_on_subspaces f_induce_action=0
+the old_action PGL_3_2 has base_length = 3 and degree 7
+action::induced_action_on_subspaces before subaction = A
+action::induced_action_on_subspaces action is of linear type
+action::induced_action_on_subspaces A->type_G == matrix_group_t
+action::induced_action_on_subspaces before init_function_pointers_induced_action
+action::induced_action_on_subspaces before allocate_element_data
+action::induced_action_on_subspaces finished, created action PGL_3_2_subspaces_3_2
+degree=16
+make_element_size=9
+low_level_point_size=9
+ACTION PGL_3_2_subspaces_3_2 degree=16 of type action_on_subspaces_t->matrix_group_t low_level_point_size=9 f_has_sims=0 f_has_strong_generators=0
+action A_ind created: ACTION PGL_3_2_subspaces_3_2 degree=16 of type action_on_subspaces_t->matrix_group_t low_level_point_size=9 f_has_sims=0 f_has_strong_generators=0
+A->f_has_strong_generators=1
+generator::init
+generator::init sz = 7
+generator::init A->degree=16
+generator::init A2->degree=16
+generator::init sz = 7
+generator::init action A:
+ACTION PGL_3_2_subspaces_3_2 degree=16 of type action_on_subspaces_t->matrix_group_t low_level_point_size=9 f_has_sims=0 f_has_strong_generators=0
+generator::init action A2:
+ACTION PGL_3_2_subspaces_3_2 degree=16 of type action_on_subspaces_t->matrix_group_t low_level_point_size=9 f_has_sims=0 f_has_strong_generators=0
+generator::init group order is 168
+generator::init sz = 7
+generator::init allocating S of size 7
+generator::init allocating Elt_memory
+generator::init done
+sub_generator::init group set up, calling gen->init_check_func
+sub_generator::init group set up, calling gen->init_early_test_func
+sub_generator::init group set up, calling gen->init_oracle
+generator::init_oracle
+generator::init_oracle done
+sub_generator::init group set up, calling gen->root[0].init_root_node
+oracle::init_root_node() initializing root node
+storing strong generators
+init_root_node done
+generator::main
+generator::main  depth = 7
+f_W = 0
+f_w = 0
+verbose_level = 20
+generator::main target_depth=7
+generator::main:  calling extend_level 0
+we will store schreier vectors for this level
+##################################################################################################
+
+generator::extend_level constructing nodes at depth 1
+verbose_level=18
+generator::extend_level 0 calling downstep
+##################################################################################################
+
+downstep depth 0 verbose_level=17
+Time
+clock ticks per second = 100
+0:00 : Level 0 Node 0 = 0 / 1 :  Downstep node starting
+oracle::downstep
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  : Downstep for {  }_{ = 1} verbose_level=15
+{  }_{ = 1}
+oracle::downstep before downstep_orbits
+Time 0:00 : Level 0 Node 0 = 0 / 1 : oracle::downstep_orbits
+verbose_level=14
+oracle::downstep_orbits we are trying to find an invariant subset
+oracle::downstep_get_invariant_subset
+oracle::downstep_get_invariant_subset done
+We did not find an invariant subset
+schreier::init_generators_by_hdl
+nb_gen = 4
+degree = 16
+schreier::init_generators_by_hdl before init_images()
+schreier::init_images
+schreier::init_images done
+schreier::init_generators_by_hdl done
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  : calling Schreier.compute_all_point_orbits for a set of size 16
+schreier::compute_all_point_orbits
+schreier::compute_all_point_orbits pt = 0 / 16 nb_orbits=0 computing orbit
+schreier::compute_point_orbit computing orbit of point 0 in action PGL_3_2_subspaces_3_2
+schreier::compute_point_orbit computing orbit of pt 0
+found orbit of length 1 total length 1 degree=16
+schreier::compute_all_point_orbits pt = 1 / 16 nb_orbits=1 computing orbit
+schreier::compute_point_orbit computing orbit of point 1 in action PGL_3_2_subspaces_3_2
+schreier::compute_point_orbit computing orbit of pt 1
+found orbit of length 7 total length 8 degree=16
+schreier::compute_all_point_orbits pt = 8 / 16 nb_orbits=2 computing orbit
+schreier::compute_point_orbit computing orbit of point 8 in action PGL_3_2_subspaces_3_2
+schreier::compute_point_orbit computing orbit of pt 8
+found orbit of length 7 total length 15 degree=16
+schreier::compute_all_point_orbits pt = 15 / 16 nb_orbits=3 computing orbit
+schreier::compute_point_orbit computing orbit of point 15 in action PGL_3_2_subspaces_3_2
+schreier::compute_point_orbit computing orbit of pt 15
+found orbit of length 1 total length 16 degree=16
+schreier::compute_all_point_orbits found 4 orbits
+The distribution of orbit lengths is: ( 1^2, 7^2 )
+Time 0:00 : Level 0 Node 0 = 0 / 1 : The 4 orbits are:
+   0 :     1 :     0 : ( 0 )
+   1 :     7 :     1 : ( 1, 2, 3, 4, 5, 6, 7 )
+   2 :     7 :     8 : ( 8, 9, 10, 11, 12, 13, 14 )
+   3 :     1 :    15 : ( 15 )
+Time 0:00 : Level 0 Node 0 = 0 / 1 : oracle::downstep_orbits: we found 4 orbits
+oracle::downstep after downstep_orbits
+oracle::downstep before downstep_orbit_test_and_schreier_vector
+Time 0:00 : Level 0 Node 0 = 0 / 1 : oracle::downstep_orbit_test_and_schreier_vector
+oracle::check_orbits_wrapper calling check_orbits f_use_incremental_test_func_if_available=0
+oracle::check_orbits
+f_use_incremental_test_func_if_available=0
+f_using_invariant_subset=0
+check_orbits: testing 4 orbits
+oracle::check_orbits calling test_point_using_check_functions
+oracle::test_point_using_check_functions
+verbose_level=6
+checking point 0
+calling gen->check_the_set
+generator::check_the_set
+generator::check_the_set checking set: { 0 }
+checking set { 0 }the set is not accepted
+orbit 0 of point 0 of length 1 is not accepted
+oracle::check_orbits calling test_point_using_check_functions
+oracle::test_point_using_check_functions
+verbose_level=6
+checking point 1
+calling gen->check_the_set
+generator::check_the_set
+generator::check_the_set checking set: { 1 }
+checking set { 1 }OK
+the set is accepted
+orbit 1 of point 1 of length 7 is accepted as orbit 0
+oracle::check_orbits calling test_point_using_check_functions
+oracle::test_point_using_check_functions
+verbose_level=6
+checking point 8
+calling gen->check_the_set
+generator::check_the_set
+generator::check_the_set checking set: { 8 }
+checking set { 8 }the set is not accepted
+orbit 2 of point 8 of length 7 is not accepted
+oracle::check_orbits calling test_point_using_check_functions
+oracle::test_point_using_check_functions
+verbose_level=6
+checking point 15
+calling gen->check_the_set
+generator::check_the_set
+generator::check_the_set checking set: { 15 }
+checking set { 15 }the set is not accepted
+orbit 3 of point 15 of length 1 is not accepted
+check_orbits: orbit testing finished: 1 orbits out of 4 accepted
+the good orbits are:
+i : representative : orbit length
+    0 :     1 :     7
+the stabilizer has 1 good orbits with 7 points
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  : after check_orbits_wrapper:
+nb_good_orbits=1
+nb_points=7
+Time 0:00 : Level 0 Node 0 = 0 / 1 : The 1 orbits are:
+   0 :     7 :     1 : ( 1, 2, 3, 4, 5, 6, 7 )
+calling get_schreier_vector
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  : after creating Schreier vector.
+oracle::downstep after downstep_orbit_test_and_schreier_vector
+oracle::downstep before downstep_implicit_fusion
+Time 0:00 : Level 0 Node 0 = 0 / 1 : oracle::downstep_implicit_fusion
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  : no implicit fusion
+oracle::downstep after downstep_implicit_fusion
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  : calling find_extensions
+oracle::downstep before find_extensions
+oracle::find_extensions computing all possible extensions (out of 1 orbits)
+oracle::downstep after find_extensions
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  : after test_orbits and find_extensions, we have 1 extensions
+oracle::print_extensions node=0 at depth 0 degree=16
+Node 0, the extensions are
+i : pt : orbit_len : type : to where
+    0 :       1 :     7 :    unprocessed    0
+done with node 0
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  : found 1 extensions (out of 4 orbits) with 7 points
+oracle::downstep done
+
+Downstep node finished :  found 7 live points in 1 orbits : oracle::print_extensions node=0 at depth 0 degree=16
+Node 0, the extensions are
+i : pt : orbit_len : type : to where
+    0 :       1 :     7 :    unprocessed    0
+done with node 0
+progress: 0. 0 %
+generator::extend_level after downstep
+generator::extend_level calling upstep
+generator::upstep
+verbose_level = 17
+##################################################################################################
+
+extension step depth 0
+verbose_level=17
+f_indicate_not_canonicals=0
+with 1 extension nodes
+generator::upstep case 0 / 1
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  Upstep :
+generator::extend_node prev=0 cur=1
+Time 0:00 : Level 0 Node 0 = 0 / 1 :  extending set {  }_{ = 1} with 7 live points : ( 1, 2, 3, 4, 5, 6, 7 )
+ with 1 extensions
+ verbose_level=15
+generator::extend_node working on extension 0 / 1:
+upstep_work::init size=0 prev=0 prev_ex=0 cur=1
+upstep_work::init path: ( 0 )
+upstep_work::init done
+upstep_work::handle_extension verbose_level = 11
+prev=0 prev_ex=0
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : type    unprocessed
+upstep_work::handle_extension unprocessed type
+upstep_work::handle_extension_unprocessed_type
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : with point 1 :
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : with point 1 : before init_extension_node
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : upstep_work::init_extension_node cur=1 verbose_level=8
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : upstep_work::init_extension_node initializing Node 1 ( 1 ) f_indicate_not_canonicals=0 verbose_level=8
+point 1 lies in an orbit of length 7 verbose_level = 8
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : { 1 }upstep_work::init_extension_node before O_cur->init_extension_node_prepare_G
+oracle::init_extension_node_prepare_G
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : ( 1 )oracle::init_extension_node_prepare_G calling init_strong_generators_by_hdl
+( 1, 2, 3, 4 )
+verbose_level=4
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : ( 1 )oracle::init_extension_node_prepare_G calling schreier_sims for stabilizer with 4 strong generators
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : ( 1 )oracle::init_extension_node_prepare_G the strong generators are:
+a group with tl=(  ) and with 4 strong generators
+generator 0:
+1 0 0
+0 1 0
+1 0 1
+
+generator 1:
+1 0 0
+0 1 0
+0 1 1
+
+generator 2:
+1 0 0
+0 0 1
+0 1 0
+
+generator 3:
+0 1 0
+1 0 0
+0 0 1
+
+>>>>G order before1>>>>G order after1Level 0 Node 0 = 0 / 1 Extension 0 / 1 : ( 1 )_{1}, previous stabilizer reconstructed
+oracle::init_extension_node_prepare_G done
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : { 1 }upstep_work::init_extension_node after O_cur->init_extension_node_prepare_G
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : { 1 }
+subspaces:
+1 0 0 81 3 2 2
+------------------------------
+(orbit length = 7)
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : { 1 }upstep_work::init_extension_node before O_cur->init_extension_node_prepare_H
+b4 preping H: pt=1,orblen7,go_G1,go_HNULL
+oracle::init_extension_node_prepare_H
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : ( 1 )oracle::init_extension_node_prepare_H computing stabilizer of point 1 (of index 7 in a group of order 1)
+verbose_level=4
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 : ( 1 )oracle::init_extension_node_prepare_H computing stabilizer of point 1 in group of order 1
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 :  oracle::init_extension_node_prepare_H setting up restricted action from the previous schreier vector:
+Level 0 Node 0 = 0 / 1 Extension 0 / 1 :  oracle::init_extension_node_prepare_H calling G.point_stabilizer_with_action:
+sims:group_order = 1 orbit_len = 7 stab_order = NULL
+sims::point_stabilizer_stabchain() orbit_len does not divide group order

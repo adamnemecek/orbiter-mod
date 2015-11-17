@@ -1,9 +1,9 @@
 DISCRETA_CPP = /usr/bin/g++
 CPPFLAGS = -Wall -I.. -I../GALOIS
-LIB = 
+LIB =
 LFLAGS = -lm
 CPP_PREFIX=b_
-UNIX_TO_DOS = ~/bin/unix2dos -n 
+UNIX_TO_DOS = ~/bin/unix2dos -n
 
 MODULES = \
 	action.o \
@@ -22,6 +22,7 @@ MODULES = \
 	action_on_cosets.o \
 	action_on_factor_space.o \
 	action_on_grassmannian.o \
+	action_on_subspaces.o \
 	action_on_k_subsets.o \
 	action_on_orthogonal.o \
 	action_on_sets.o \
@@ -45,7 +46,7 @@ MODULES = \
 	strong_generators.o \
 	union_find.o \
 	union_find_on_k_subsets.o \
-	vector_ge.o 
+	vector_ge.o
 
 LIB = libaction.a
 
@@ -75,6 +76,7 @@ action_on_determinant.o: action_on_determinant.C; $(DISCRETA_CPP) $(CPPFLAGS) -c
 action_on_cosets.o: action_on_cosets.C; $(DISCRETA_CPP) $(CPPFLAGS) -c action_on_cosets.C -o $@
 action_on_factor_space.o: action_on_factor_space.C; $(DISCRETA_CPP) $(CPPFLAGS) -c action_on_factor_space.C -o $@
 action_on_grassmannian.o: action_on_grassmannian.C; $(DISCRETA_CPP) $(CPPFLAGS) -c action_on_grassmannian.C -o $@
+action_on_subspaces.o: action_on_subspaces.C; $(DISCRETA_CPP) $(CPPFLAGS) -c action_on_subspaces.C -o $@
 action_on_orthogonal.o: action_on_orthogonal.C; $(DISCRETA_CPP) $(CPPFLAGS) -c action_on_orthogonal.C -o $@
 action_on_sets.o: action_on_sets.C; $(DISCRETA_CPP) $(CPPFLAGS) -c action_on_sets.C -o $@
 action_on_spread_set.o: action_on_spread_set.C; $(DISCRETA_CPP) $(CPPFLAGS) -c action_on_spread_set.C -o $@
@@ -142,5 +144,5 @@ cpp:
 	$(UNIX_TO_DOS) action.h ../WINDOWS/action.h
 	mv $(CPP_PREFIX)* ../WINDOWS
 
-	
+
 

@@ -8,7 +8,7 @@
 
 #include "orbiter.h"
 #include "discreta.h"
-
+ 
 int main(int argc, const char **argv)
 {
 	INT i,vl,rk,nbx,nb,k;
@@ -21,19 +21,29 @@ int main(int argc, const char **argv)
 	finite_field* F;
 	F=new finite_field;
 	F->init(2,0);
-	G->init(5,0,F,3);
+	G->init(5,1,F,3);
 	S->init(5,F,3);
 	cout<< "total subspaces= "<<S->nb_of_subspaces(3) <<endl;
-  for (i=0;i<S->nb_of_subspaces(3);i++)
-	{
-		cout<< ">>bound "<<S->nb_of_subspaces(3)<<endl;
-		cout<< ">>unranking "<<i<<endl;
-		S->unrank_INT(i,3);
-        S->print(S->unrank_k(i,3));
-		cout<< ">>ranking back"<<endl;
-		cout<<">>i = "<< i << " rank ="<< S->rank_INT(S->unrank_k(i,3),3)<< endl;
+    action_on_grassmannian* agrass;
+    agrass=new action_on_grassmannian;
+    action* A;
+    A=new action;
+    A->init_projective_group(5,F,FALSE,TRUE,3);
+    A->init_matrix_group_strong_generators_builtin(A->G.matrix_grp, 3);
+    agrass->init(*A,S->G[2],3);
+    //for (i=0;i<S->nb_of_subspaces(3);i++)
+	//{
+		//cout<< ">>bound "<<S->nb_of_subspaces(3)<<endl;
+		//cout<< ">>unranking "<<i<<endl;
+		//S->unrank_INT(i,3);
+        //S->print(S->unrank_k(i,3));
+		//cout<< ">>ranking back"<<endl;
+		//cout<<">>i = "<< i << " rank ="<< S->rank_INT(S->unrank_k(i,3),3)<< endl;
 
-	}
+	//}
+    delete A;
+    delete G;
+    delete F;
 	delete S;
 }
 

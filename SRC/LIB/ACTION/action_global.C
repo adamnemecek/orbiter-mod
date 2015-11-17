@@ -57,7 +57,7 @@ void create_orbits_on_subset_using_restricted_action(action *&A_by_restriction, 
 	if (f_v) {
 		cout << "create_orbits_on_subset_using_restricted_action done" << endl;
 		}
-	
+
 }
 
 void create_orbits_on_sets_using_action_on_sets(action *&A_on_sets, schreier *&Orbits, action *A, sims *S, INT nb_sets, INT set_size, INT *sets, INT verbose_level)
@@ -75,7 +75,7 @@ void create_orbits_on_sets_using_action_on_sets(action *&A_on_sets, schreier *&O
 	if (f_v) {
 		cout << "create_orbits_on_sets_using_action_on_sets done" << endl;
 		}
-	
+
 }
 
 
@@ -88,7 +88,7 @@ action *new_action_by_right_multiplication(sims *group_we_act_on, INT f_transfer
 		cout << "new_action_by_right_multiplication" << endl;
 		}
 	A = new action;
-	A->induced_action_by_right_multiplication(FALSE /* f_basis */, NULL /* sims *old_G */, 
+	A->induced_action_by_right_multiplication(FALSE /* f_basis */, NULL /* sims *old_G */,
 		group_we_act_on, f_transfer_ownership /* f_ownership */, verbose_level - 1);
 	if (f_v) {
 		cout << "new_action_by_right_multiplication done" << endl;
@@ -145,7 +145,10 @@ void action_print_symmetry_group_type(ostream &ost, symmetry_group_type a)
 	else if (a == action_on_determinant_t) {
 		ost << "action_on_determinant_t";
 		}
-	else if (a == action_on_grassmannian_t) {
+	else if (a == action_on_subspaces_t) {
+		ost << "action_on_subspaces_t";
+		}
+    else if (a == action_on_grassmannian_t) {
 		ost << "action_on_grassmannian_t";
 		}
 	else if (a == action_on_spread_set_t) {
@@ -178,7 +181,7 @@ INT choose_next_base_point_default_method(action *A, INT *Elt, INT verbose_level
 {
 	INT f_v = (verbose_level >= 1);
 	INT b;
-	
+
 	if (f_v) {
 		cout << "choose_next_base_point_default_method" << endl;
 		cout << "calling A->find_non_fixed_point" << endl;
@@ -198,7 +201,7 @@ INT choose_next_base_point_default_method(action *A, INT *Elt, INT verbose_level
 	return b;
 }
 
-void make_generators_stabilizer_of_two_components(action *A_PGL_n_q, action *A_PGL_k_q, 
+void make_generators_stabilizer_of_two_components(action *A_PGL_n_q, action *A_PGL_k_q,
 	INT k, vector_ge *gens, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -252,7 +255,7 @@ void make_generators_stabilizer_of_two_components(action *A_PGL_n_q, action *A_P
 
 	gens_PGL_k = A_PGL_k_q->Strong_gens;
 	//gens_PGL_k = A_PGL_k_q->strong_generators;
-	
+
 	len = gens_PGL_k->gens->len;
 	//len = gens_PGL_k->len;
 
@@ -264,7 +267,7 @@ void make_generators_stabilizer_of_two_components(action *A_PGL_n_q, action *A_P
 	if (Mtx->f_semilinear) {
 		sz++;
 		}
-	
+
 
 	Data = NEW_INT(new_len * sz);
 	idx = 0;
@@ -332,7 +335,7 @@ void make_generators_stabilizer_of_two_components(action *A_PGL_n_q, action *A_P
 			}
 		A_PGL_n_q->move(Elt1, gens->ith(h));
 		}
-	
+
 
 	FREE_INT(Data);
 
@@ -348,7 +351,7 @@ void make_generators_stabilizer_of_two_components(action *A_PGL_n_q, action *A_P
 }
 
 
-void make_generators_stabilizer_of_three_components(action *A_PGL_n_q, action *A_PGL_k_q, 
+void make_generators_stabilizer_of_three_components(action *A_PGL_n_q, action *A_PGL_k_q,
 	INT k, vector_ge *gens, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -396,7 +399,7 @@ void make_generators_stabilizer_of_three_components(action *A_PGL_n_q, action *A
 
 	gens_PGL_k = A_PGL_k_q->Strong_gens;
 	//gens_PGL_k = A_PGL_k_q->strong_generators;
-	
+
 	len = gens_PGL_k->gens->len;
 	//len = gens_PGL_k->len;
 
@@ -408,7 +411,7 @@ void make_generators_stabilizer_of_three_components(action *A_PGL_n_q, action *A
 	if (Mtx->f_semilinear) {
 		sz++;
 		}
-	
+
 
 	Data = NEW_INT(new_len * sz);
 	idx = 0;
@@ -460,7 +463,7 @@ void make_generators_stabilizer_of_three_components(action *A_PGL_n_q, action *A
 			}
 		A_PGL_n_q->move(Elt1, gens->ith(h));
 		}
-	
+
 
 	FREE_INT(Data);
 
@@ -474,9 +477,9 @@ void make_generators_stabilizer_of_three_components(action *A_PGL_n_q, action *A
 		}
 }
 
-void generators_to_strong_generators(action *A, 
-	INT f_target_go, longinteger_object &target_go, 
-	vector_ge *gens, strong_generators *&Strong_gens /*vector_ge *strong_gens, INT *tl */, 
+void generators_to_strong_generators(action *A,
+	INT f_target_go, longinteger_object &target_go,
+	vector_ge *gens, strong_generators *&Strong_gens /*vector_ge *strong_gens, INT *tl */,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -498,29 +501,29 @@ void generators_to_strong_generators(action *A,
 	if (f_v) {
 		cout << "generators_to_strong_generators before G->build_up_group_from_generators, target_go = " << target_go << endl;
 		}
-	G->build_up_group_from_generators(K, gens, 
-		f_target_go, &target_go, 
+	G->build_up_group_from_generators(K, gens,
+		f_target_go, &target_go,
 		FALSE /*f_override_choose_next_base_point */,
-		NULL /*INT (*choose_next_base_point_method)(action *A, INT *Elt, INT verbose_level)*/, 
+		NULL /*INT (*choose_next_base_point_method)(action *A, INT *Elt, INT verbose_level)*/,
 		verbose_level - 2);
 
-	
 
-	
+
+
 	G->group_order(go);
 
 	INT nb_times = 200;
-	
+
 	while (TRUE) {
 		if (D.compare_unsigned(go, target_go) == 0) {
 			cout << "generators_to_strong_generators: group orders match, we are done" << endl;
 			break;
 			}
-	
+
 		cout << "generators_to_strong_generators: group orders do not match" << endl;
 		cout << "go = " << go << endl;
 		cout << "target_go = " << target_go << endl;
-		
+
 		cout << "generators_to_strong_generators: calling closure_group" << endl;
 		G->closure_group(nb_times, 0/*verbose_level*/);
 		G->group_order(go);
@@ -612,7 +615,7 @@ void compute_generators_GL_n_q(INT *&Gens, INT &nb_gens, INT &elt_size, INT n, f
 			cout << "Generator " << h << ":" << endl;
 			INT_matrix_print(Gens + h * elt_size, n, n);
 			}
-		
+
 		}
 	delete A;
 	//delete F;
@@ -631,11 +634,11 @@ void order_of_PGGL_n_q(longinteger_object &go, INT n, INT q, INT f_semilinear)
 	A = new action;
 
 	F->init(q, 0);
-	A->init_projective_group(n, F, 
-		f_semilinear, 
+	A->init_projective_group(n, F,
+		f_semilinear,
 		TRUE /* f_basis */, verbose_level - 2);
 	A->group_order(go);
-	
+
 	delete F;
 	delete A;
 }
@@ -658,7 +661,7 @@ void set_orthogonal_group_type(INT f_siegel, INT f_reflection, INT f_similarity,
 	f_generator_orthogonal_semisimilarity = f_semisimilarity;
 }
 
-void callback_choose_random_generator_orthogonal(INT iteration, 
+void callback_choose_random_generator_orthogonal(INT iteration,
 	INT *Elt, void *data, INT verbose_level)
 {
 	//verbose_level += 5;
@@ -681,23 +684,23 @@ void callback_choose_random_generator_orthogonal(INT iteration,
 
 	action_on_orthogonal *AO;
 	orthogonal *O;
-	
+
 	AO = A->G.AO;
 	O = AO->O;
-	
+
 	M = subaction->G.matrix_grp;
-	M->orthogonal_group_random_generator(ss->GA, O, 
-		f_generator_orthogonal_siegel, 
-		f_generator_orthogonal_reflection, 
-		f_generator_orthogonal_similarity, 
-		f_generator_orthogonal_semisimilarity, 
+	M->orthogonal_group_random_generator(ss->GA, O,
+		f_generator_orthogonal_siegel,
+		f_generator_orthogonal_reflection,
+		f_generator_orthogonal_similarity,
+		f_generator_orthogonal_semisimilarity,
 		Elt, verbose_level - 2);
 	//M->GL_invert_internal(Elt, Elt + M->elt_size_INT_half, 0);
 
 }
 
 #if 0
-void callback_choose_random_generator_orthogonal_but_no_reflection(INT iteration, 
+void callback_choose_random_generator_orthogonal_but_no_reflection(INT iteration,
 	INT *Elt, void *data, INT verbose_level)
 {
 	//verbose_level += 5;
@@ -717,14 +720,14 @@ void callback_choose_random_generator_orthogonal_but_no_reflection(INT iteration
 	INT f_semisimilarity = TRUE;
 	action_on_orthogonal *AO;
 	orthogonal *O;
-	
+
 	AO = A->G.AO;
 	O = AO->O;
-	
-	
+
+
 	M = subaction->G.matrix_grp;
-	M->orthogonal_group_random_generator(ss->GA, O, 
-		f_siegel, f_reflection, f_similarity, f_semisimilarity, 
+	M->orthogonal_group_random_generator(ss->GA, O,
+		f_siegel, f_reflection, f_similarity, f_semisimilarity,
 		Elt, verbose_level - 2);
 	//M->GL_invert_internal(Elt, Elt + M->elt_size_INT_half, 0);
 
@@ -739,7 +742,7 @@ INT choose_next_base_point_ovoidal_method(action *A, INT *Elt, INT verbose_level
 	INT i, a, b, c, f;
 	matrix_group *M;
 	orthogonal *O;
-	
+
 	M = A->subaction->G.matrix_grp;
 	if (M == NULL) {
 		cout << "choose_next_base_point_ovoidal_method M == NULL" << endl;
@@ -789,15 +792,15 @@ void test_matrix_group(INT k, INT q, INT f_semilinear, INT verbose_level)
 	action A;
 	finite_field *F;
 	INT f_basis = TRUE;
-	
+
 	F = new finite_field;
 	F->init(q, 0);
 	A.init_projective_group(k, F, f_semilinear, f_basis, verbose_level);
 	delete F;
 }
 
-void lift_generators(vector_ge *gens_in, vector_ge *&gens_out, 
-	action *Aq, subfield_structure *S, INT n, 
+void lift_generators(vector_ge *gens_in, vector_ge *&gens_out,
+	action *Aq, subfield_structure *S, INT n,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -854,8 +857,8 @@ void lift_generators(vector_ge *gens_in, vector_ge *&gens_out,
 
 }
 
-void retract_generators(vector_ge *gens_in, vector_ge *&gens_out, 
-	action *AQ, subfield_structure *S, INT n, 
+void retract_generators(vector_ge *gens_in, vector_ge *&gens_out,
+	action *AQ, subfield_structure *S, INT n,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -886,7 +889,7 @@ void retract_generators(vector_ge *gens_in, vector_ge *&gens_out,
 	gens_out->allocate(nb_gens);
 	for (t = 0; t < nb_gens; t++) {
 		if (f_vv) {
-			cout << "retract_generators " << t << 
+			cout << "retract_generators " << t <<
 " / " << nb_gens << endl;
 			}
 		Eltq = gens_in->ith(t);
@@ -902,7 +905,7 @@ void retract_generators(vector_ge *gens_in, vector_ge *&gens_out,
 			}
 		AQ->element_move(EltQ, gens_out->ith(t), 0);
 		if (f_vv) {
-			cout << "retract_generators " << t << 
+			cout << "retract_generators " << t <<
 " / " << nb_gens << " done" << endl;
 			}
 		}
@@ -915,10 +918,10 @@ void retract_generators(vector_ge *gens_in, vector_ge *&gens_out,
 }
 
 void lift_generators_to_subfield_structure(
-	INT n, INT s, 
-	subfield_structure *S, 
-	action *Aq, action *AQ, 
-	strong_generators *&Strong_gens, 
+	INT n, INT s,
+	subfield_structure *S,
+	action *Aq, action *AQ,
+	strong_generators *&Strong_gens,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -957,12 +960,12 @@ void lift_generators_to_subfield_structure(
 	INT r;
 
 	AQ->group_order(order_GLmQ);
-	
+
 
 	if (f_v) {
 		cout << "lift_generators_to_subfield_structure order of GL(m,Q) = " << order_GLmQ << endl;
 		}
-	D.integral_division_by_INT(order_GLmQ, 
+	D.integral_division_by_INT(order_GLmQ,
 		q - 1, target_go, r);
 	if (f_v) {
 		cout << "lift_generators_to_subfield_structure target_go = " << target_go << endl;
@@ -991,13 +994,13 @@ void lift_generators_to_subfield_structure(
 		cout << "lift_generators_to_subfield_structure creating lifted group:" << endl;
 		}
 	//Aq->group_order(target_go);
-	Sims = create_sims_from_generators_with_target_group_order(Aq, 
-		gens1, 
-		target_go, 
+	Sims = create_sims_from_generators_with_target_group_order(Aq,
+		gens1,
+		target_go,
 		0 /* verbose_level */);
 
 #if 0
-	Sims = create_sims_from_generators_without_target_group_order(Aq, 
+	Sims = create_sims_from_generators_without_target_group_order(Aq,
 		gens1, MINIMUM(2, verbose_level - 3));
 #endif
 
@@ -1033,16 +1036,16 @@ void lift_generators_to_subfield_structure(
 
 
 
-void create_linear_group(sims *&S, action *&A, 
-	finite_field *F, INT m, 
-	INT f_projective, INT f_general, INT f_affine, 
-	INT f_semilinear, INT f_special, 
+void create_linear_group(sims *&S, action *&A,
+	finite_field *F, INT m,
+	INT f_projective, INT f_general, INT f_affine,
+	INT f_semilinear, INT f_special,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	//INT f_vv = (verbose_level >= 2);
 	INT f_basis = TRUE;
-	
+
 	if (f_v) {
 		cout << "create_linear_group m=" << m << " q=" << F->q << endl;
 		}
@@ -1050,15 +1053,15 @@ void create_linear_group(sims *&S, action *&A,
 	A = new action;
 
 	if (f_projective) {
-		A->init_projective_group(m, F, f_semilinear, 
+		A->init_projective_group(m, F, f_semilinear,
 			f_basis, verbose_level);
 		}
 	else if (f_general) {
-		A->init_general_linear_group(m, F, f_semilinear, 
+		A->init_general_linear_group(m, F, f_semilinear,
 			f_basis, verbose_level);
 		}
 	else if (f_affine) {
-		A->init_affine_group(m, F, f_semilinear, 
+		A->init_affine_group(m, F, f_semilinear,
 			f_basis, verbose_level);
 		}
 	else {
@@ -1076,16 +1079,16 @@ void create_linear_group(sims *&S, action *&A,
 	vector_ge *SG;
 	INT *tl;
 	INT i;
-	
+
 	tl = NEW_INT(A->base_len);
-	
+
 	for (i = 0; i < A->base_len; i++)
 		tl[i] = A->transversal_length[i];
-	
+
 	//SG = new vector_ge;
 	//A->compute_strong_generators(*SG, verbose_level - 1);
 	//cout << "computing strong generators finished" << endl;
-	
+
 	A->f_has_strong_generators = TRUE;
 	A->strong_generators = SG;
 	A->tl = tl;
@@ -1104,7 +1107,7 @@ void create_linear_group(sims *&S, action *&A,
 
 		action A_on_det;
 		longinteger_object go;
-		
+
 		A_on_det.induced_action_on_determinant(A->Sims, verbose_level);
 		if (f_v) {
 			cout << "create_linear_group induced_action_on_determinant finished" << endl;
@@ -1133,22 +1136,22 @@ void create_linear_group(sims *&S, action *&A,
 	A->get_strong_generators(SG, tl, verbose_level - 1);
 
 	sims *Sims;
-	
+
 	Sims = new sims;
 	Sims->init(A);
 	Sims->init_trivial_group(verbose_level - 1);
 	Sims->init_generators(*A->strong_generators, FALSE);
 	Sims->compute_base_orbits(verbose_level - 1);
-	
+
 	A->f_has_sims = TRUE;
 	A->Sims = Sims;
 
 	cout << "action sims initialized" << endl;
-	
+
 	if (linear_f_special) {
 		action A_on_det;
 		longinteger_object go;
-		
+
 		cout << "computing intersection with special linear group" << endl;
 		A_on_det.induced_action_on_determinant(A->Sims, verbose_level);
 		cout << "induced_action_on_determinant finished" << endl;
@@ -1156,32 +1159,32 @@ void create_linear_group(sims *&S, action *&A,
 		cout << "intersection has order " << go << endl;
 		//A_on_det.Kernel->compute_strong_generators(*SG, verbose_level - 1);
 		A_on_det.Kernel->extract_strong_generators_in_order(*SG, tl, verbose_level - 1);
-		
+
 		sims *Sims2;
-		
+
 		Sims2 = new sims;
 		Sims2->init(A);
 		Sims2->init_trivial_group(verbose_level - 1);
 		Sims2->init_generators(*SG, FALSE);
 		Sims2->compute_base_orbits(verbose_level - 1);
-	
+
 		A->init_sims(Sims2, verbose_level);
 		}
 #endif
 
-	
-	
 
 
-	
+
+
+
 	if (f_v) {
 		A->print_base();
 		if (f_projective) {
 			display_all_PG_elements(m - 1, *F);
 			}
 		}
-	
-	
+
+
 
 	if (f_v) {
 		cout << "create_linear_group finished" << endl;
@@ -1192,7 +1195,7 @@ void create_linear_group(sims *&S, action *&A,
 
 #if 0
 action *create_automorphism_group_of_graph(
-	INT n, INT *Adj, 
+	INT n, INT *Adj,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -1224,8 +1227,8 @@ action *create_automorphism_group_of_colored_graph_object(colored_graph *CG, INT
 		}
 
 	A = create_automorphism_group_of_colored_graph(
-		CG->nb_points, TRUE /* f_bitvec */, CG->bitvector_adjacency, NULL /* INT  *Adj */, 
-		CG->point_color, 
+		CG->nb_points, TRUE /* f_bitvec */, CG->bitvector_adjacency, NULL /* INT  *Adj */,
+		CG->point_color,
 		verbose_level);
 
 	if (f_v) {
@@ -1235,8 +1238,8 @@ action *create_automorphism_group_of_colored_graph_object(colored_graph *CG, INT
 }
 
 action *create_automorphism_group_of_colored_graph(
-	INT n, INT f_bitvec, UBYTE *Adj_bitvec, INT *Adj, 
-	INT *vertex_colors, 
+	INT n, INT f_bitvec, UBYTE *Adj_bitvec, INT *Adj,
+	INT *vertex_colors,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -1309,8 +1312,8 @@ action *create_automorphism_group_of_colored_graph(
 	for (i = 0; i < C.nb_types; i++) {
 		parts[1 + i] = 1;
 		}
-	
-	
+
+
 
 	if (f_v) {
 		cout << "create_automorphism_group_of_colored_graph before create_automorphism_group_of_graph_with_partition_and_labeling" << endl;
@@ -1328,7 +1331,7 @@ action *create_automorphism_group_of_colored_graph(
 }
 
 action *create_automorphism_group_of_graph_bitvec(
-	INT n, UBYTE *Adj_bitvec, 
+	INT n, UBYTE *Adj_bitvec,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -1351,10 +1354,10 @@ action *create_automorphism_group_of_graph_bitvec(
 }
 
 action *create_automorphism_group_of_graph_with_partition_and_labeling(
-	INT n, 
-	INT f_bitvector, UBYTE *Adj_bitvec, INT *Adj, 
-	INT nb_parts, INT *parts, 
-	INT *labeling, 
+	INT n,
+	INT f_bitvector, UBYTE *Adj_bitvec, INT *Adj,
+	INT nb_parts, INT *parts,
+	INT *labeling,
 	INT verbose_level)
 // labeling[n]
 {
@@ -1365,11 +1368,11 @@ action *create_automorphism_group_of_graph_with_partition_and_labeling(
 	INT *Base, *Transversal_length, *partitions;
 	INT Aut_counter = 0, Base_length = 0, Ago = 0;
 	INT i, u, a;
-	
-	
+
+
 	//m = # rows
 	//n = # cols
-	
+
 	Aut = NEW_INT(n * n);
 	Base = NEW_INT(n);
 	Transversal_length = NEW_INT(n);
@@ -1396,22 +1399,22 @@ action *create_automorphism_group_of_graph_with_partition_and_labeling(
 
 	//labeling = NEW_INT(n);
 	//labeling_inv = NEW_INT(n);
-	
+
 	if (f_bitvector) {
 		if (f_v) {
 			cout << "create_automorphism_group_of_graph_with_partition_and_labeling before nauty_interface_graph_bitvec" << endl;
 			}
-		nauty_interface_graph_bitvec(n, Adj_bitvec, 
-			labeling, partitions, 
-			Aut, Aut_counter, 
-			Base, Base_length, 
+		nauty_interface_graph_bitvec(n, Adj_bitvec,
+			labeling, partitions,
+			Aut, Aut_counter,
+			Base, Base_length,
 			Transversal_length, Ago, verbose_level);
 		}
 	else {
-		nauty_interface_graph_INT(n, Adj, 
-			labeling, partitions, 
-			Aut, Aut_counter, 
-			Base, Base_length, 
+		nauty_interface_graph_INT(n, Adj,
+			labeling, partitions,
+			Aut, Aut_counter,
+			Base, Base_length,
 			Transversal_length, Ago, verbose_level);
 		}
 
@@ -1454,8 +1457,8 @@ action *create_automorphism_group_of_graph_with_partition_and_labeling(
 
 	A = new action;
 
-	A->init_permutation_group_from_generators(n, 
-		Aut_counter, Aut, 
+	A->init_permutation_group_from_generators(n,
+		Aut_counter, Aut,
 		Base_length, Base,
 		verbose_level - 2);
 
@@ -1478,7 +1481,7 @@ void create_incidence_matrix_of_graph(INT *Adj, INT n, INT *&M, INT &nb_rows, IN
 {
 	INT f_v = (verbose_level >= 1);
 	INT i, j, u;
-	
+
 	if (f_v) {
 		cout << "create_incidence_matrix_of_graph" << endl;
 		}
@@ -1528,7 +1531,7 @@ action *create_automorphism_group_of_graph(INT *Adj, INT n, INT verbose_level)
 	create_incidence_matrix_of_graph(Adj, n, M, nb_rows, nb_cols, verbose_level);
 	A = create_automorphism_group_of_incidence_matrix(
 		nb_rows, nb_cols, M, verbose_level);
-	
+
 	FREE_INT(M);
 	if (f_v) {
 		cout << "create_automorphism_group_of_graph done" << endl;
@@ -1538,14 +1541,14 @@ action *create_automorphism_group_of_graph(INT *Adj, INT n, INT verbose_level)
 
 
 action *create_automorphism_group_of_block_system(
-	INT nb_points, INT nb_blocks, INT block_size, INT *Blocks, 
+	INT nb_points, INT nb_blocks, INT block_size, INT *Blocks,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	INT *M;
 	action *A;
-	INT i, j, h;	
-	
+	INT i, j, h;
+
 	if (f_v) {
 		cout << "create_automorphism_group_of_block_system" << endl;
 		}
@@ -1570,15 +1573,15 @@ action *create_automorphism_group_of_block_system(
 }
 
 action *create_automorphism_group_of_incidence_matrix(
-	INT m, INT n, INT *Mtx, 
+	INT m, INT n, INT *Mtx,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	INT nb_inc;
 	INT *X;
 	action *A;
-	INT i, j, h;	
-	
+	INT i, j, h;
+
 	if (f_v) {
 		cout << "create_automorphism_group_of_incidence_matrix" << endl;
 		}
@@ -1610,7 +1613,7 @@ action *create_automorphism_group_of_incidence_matrix(
 }
 
 action *create_automorphism_group_of_incidence_structure(
-	incidence_structure *Inc, 
+	incidence_structure *Inc,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -1620,7 +1623,7 @@ action *create_automorphism_group_of_incidence_structure(
 	INT *data;
 	INT nb;
 	INT i, j, h, a;
-	
+
 	if (f_v) {
 		cout << "create_automorphism_group_of_incidence_structure" << endl;
 		}
@@ -1643,7 +1646,7 @@ action *create_automorphism_group_of_incidence_structure(
 		}
 
 	A = create_automorphism_group_of_incidence_structure_low_level(
-		m, n, nb_inc, X, 
+		m, n, nb_inc, X,
 		verbose_level - 1);
 
 	FREE_INT(X);
@@ -1652,7 +1655,7 @@ action *create_automorphism_group_of_incidence_structure(
 }
 
 action *create_automorphism_group_of_incidence_structure_low_level(
-	INT m, INT n, INT nb_inc, INT *X, 
+	INT m, INT n, INT nb_inc, INT *X,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -1662,11 +1665,11 @@ action *create_automorphism_group_of_incidence_structure_low_level(
 	INT *Base, *Transversal_length, *partitions;
 	INT Aut_counter = 0, Base_length = 0, Ago = 0;
 	INT i;
-	
-	
+
+
 	//m = # rows
 	//n = # cols
-	
+
 	Aut = NEW_INT((m+n) * (m+n));
 	Base = NEW_INT(m+n);
 	Transversal_length = NEW_INT(m + n);
@@ -1684,10 +1687,10 @@ action *create_automorphism_group_of_incidence_structure_low_level(
 	labeling = NEW_INT(m + n);
 	//labeling_inv = NEW_INT(m + n);
 
-	nauty_interface_INT(m, n, X, nb_inc, 
-		labeling, partitions, 
-		Aut, Aut_counter, 
-		Base, Base_length, 
+	nauty_interface_INT(m, n, X, nb_inc,
+		labeling, partitions,
+		Aut, Aut_counter,
+		Base, Base_length,
 		Transversal_length, Ago);
 
 	if (f_v) {
@@ -1726,8 +1729,8 @@ action *create_automorphism_group_of_incidence_structure_low_level(
 
 	A = new action;
 
-	A->init_permutation_group_from_generators(m + n, 
-		Aut_counter, Aut, 
+	A->init_permutation_group_from_generators(m + n,
+		Aut_counter, Aut,
 		Base_length, Base,
 		verbose_level - 2);
 
@@ -1746,12 +1749,12 @@ action *create_automorphism_group_of_incidence_structure_low_level(
 	return A;
 }
 
-void test_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X, 
+void test_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X,
 	INT &f_self_dual, INT &f_self_polar, INT verbose_level)
 {
 	INT M, N, i, j, h, Nb_inc, a;
 	INT *Mtx, *Y;
-	
+
 	if (m != n) {
 		f_self_dual = FALSE;
 		f_self_polar = FALSE;
@@ -1783,7 +1786,7 @@ void test_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X,
 			Y[Nb_inc++] = i;
 			}
 		}
-	
+
 	do_self_dual_self_polar(input_no, M, N, Nb_inc, Y, f_self_dual, f_self_polar, verbose_level - 1);
 
 	FREE_INT(Mtx);
@@ -1791,7 +1794,7 @@ void test_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X,
 }
 
 
-void do_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X, 
+void do_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X,
 	INT &f_self_dual, INT &f_self_polar, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -1801,10 +1804,10 @@ void do_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X,
 	INT *Base, *Transversal_length, *partitions;
 	INT Aut_counter = 0, Base_length = 0, Ago = 0;
 	INT i; //, j;
-	
+
 	//m = # rows
 	//n = # cols
-	
+
 	if (ODD(m)) {
 		f_self_dual = f_self_polar = FALSE;
 		return;
@@ -1841,7 +1844,7 @@ void do_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X,
 		l = col_parts[i];
 		partitions[j + l - 1] = 0;
 		j +=l;
-		}				
+		}
 #endif
 
 	labeling = NEW_INT(m + n);
@@ -1854,7 +1857,7 @@ void do_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X,
 			cout << "The group order is = " << Ago << endl;
 			}
 		}
-	
+
 #if 0
 	for (i = 0; i < m + n; i++) {
 		j = labeling[i];
@@ -1914,8 +1917,8 @@ void do_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X,
 
 
 
-	A.init_permutation_group_from_generators(m + n, 
-		Aut_counter, Aut, 
+	A.init_permutation_group_from_generators(m + n,
+		Aut_counter, Aut,
 		Base_length, Base,
 		verbose_level);
 
@@ -1931,19 +1934,19 @@ void do_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X,
 		longinteger_object go;
 		INT goi;
 		INT *Elt;
-	
+
 		S = A.Sims;
 		S->group_order(go);
 		goi = go.as_INT();
 		Elt = NEW_INT(A.elt_size_in_INT);
-		
+
 		cout << "the group order is: " << goi << endl;
 		for (i = 0; i < goi; i++) {
 			S->element_unrank_INT(i, Elt);
 			if (Elt[0] < m_half) {
 				continue; // not a duality
 				}
-			
+
 			for (a = 0; a < m_half; a++) {
 				b = Elt[a];
 				c = Elt[b];
@@ -1958,14 +1961,14 @@ void do_self_dual_self_polar(INT input_no, INT m, INT n, INT nb_inc, INT *X,
 				break;
 				}
 			}
-		
+
 
 		FREE_INT(Elt);
 		}
 
 
 
-		
+
 	FREE_INT(aut);
 	FREE_INT(Aut);
 	FREE_INT(Base);
@@ -1988,7 +1991,7 @@ void add_configuration_graph(ofstream &g, INT m, INT n, INT nb_inc, INT *X, INT 
 	longinteger_object ago;
 
 	A = create_automorphism_group_of_incidence_structure_low_level(
-			m, n, nb_inc, X, 
+			m, n, nb_inc, X,
 			verbose_level - 2);
 	A->group_order(ago);
 
@@ -2049,7 +2052,7 @@ void add_configuration_graph(ofstream &g, INT m, INT n, INT nb_inc, INT *X, INT 
 			}
 		}
 	g << ago << endl;
-	
+
 	FREE_INT(joining_table);
 	FREE_INT(M1);
 	delete A;
@@ -2057,14 +2060,14 @@ void add_configuration_graph(ofstream &g, INT m, INT n, INT nb_inc, INT *X, INT 
 
 // O4_model:
 
-void O4_isomorphism_2to4_embedded(action *A4, action *A5, finite_field *Fq, 
+void O4_isomorphism_2to4_embedded(action *A4, action *A5, finite_field *Fq,
 	INT f_switch, INT *mtx2x2_T, INT *mtx2x2_S, INT *Elt, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	INT mtx4x4[16];
 	INT mtx5x5[25];
 	INT *E1;
-	
+
 	if (f_v) {
 		cout << "O4_isomorphism_2to4_embedded" << endl;
 		}
@@ -2076,15 +2079,15 @@ void O4_isomorphism_2to4_embedded(action *A4, action *A5, finite_field *Fq,
 		cout << "," << endl;
 		print_integer_matrix_width(cout, mtx2x2_S, 2, 2, 2, 3);
 		}
-	
+
 	O4_isomorphism_2to4(Fq, mtx2x2_T, mtx2x2_S, f_switch, mtx4x4);
-	
+
 	A4->make_element(E1, mtx4x4, 0);
 	if (f_v) {
 		cout << "in 4x4:" << endl;
 		A4->element_print_quick(E1, cout);
 		}
-	
+
 	O4_to_O5(A4, A5, Fq, E1, mtx5x5, verbose_level - 2);
 	if (f_v) {
 		cout << "in 5x5:" << endl;
@@ -2098,7 +2101,7 @@ void O4_isomorphism_2to4_embedded(action *A4, action *A5, finite_field *Fq,
 	FREE_INT(E1);
 }
 
-void O5_to_O4(action *A4, action *A5, finite_field *Fq, 
+void O5_to_O4(action *A4, action *A5, finite_field *Fq,
 	INT *mtx4x4, INT *mtx5x5, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -2125,7 +2128,7 @@ void O5_to_O4(action *A4, action *A5, finite_field *Fq,
 		}
 }
 
-void O4_to_O5(action *A4, action *A5, finite_field *Fq, 
+void O4_to_O5(action *A4, action *A5, finite_field *Fq,
 	INT *mtx4x4, INT *mtx5x5, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -2136,15 +2139,15 @@ void O4_to_O5(action *A4, action *A5, finite_field *Fq,
 	INT discrete_log;
 	INT *A4_Elt1;
 	INT *A5_Elt1;
-	INT gram[16];	
+	INT gram[16];
 	INT mtx_tr[16];
 	INT mtx_tmp1[16];
 	INT mtx_tmp2[16];
 	INT mtx5[25];
-	
+
 	A4_Elt1 = NEW_INT(A4->elt_size_in_INT);
 	A5_Elt1 = NEW_INT(A5->elt_size_in_INT);
-	
+
 	A4->make_element(A4_Elt1, mtx4x4, 0);
 	if (f_v) {
 		cout << "A4_Elt1:" << endl;
@@ -2182,7 +2185,7 @@ void O4_to_O5(action *A4, action *A5, finite_field *Fq,
 		cout << "transformed Gram matrix:" << endl;
 		print_integer_matrix_width(cout, mtx_tmp2, 4, 4, 4, 3);
 		}
-	
+
 	value = 0;
 	for (i = 0; i < 16; i++) {
 		if (!mtx_tmp2[i]) {
@@ -2212,8 +2215,8 @@ void O4_to_O5(action *A4, action *A5, finite_field *Fq,
 		exit(1);
 		}
 	sqrt_value = Fq->alpha_power(discrete_log >> 1);
-	
-	
+
+
 	for (i = 0 ; i < 25; i++) {
 		mtx5[i] = 0;
 		}
@@ -2224,7 +2227,7 @@ void O4_to_O5(action *A4, action *A5, finite_field *Fq,
 			}
 		}
 
-	
+
 	A5->make_element(A5_Elt1, mtx5, 0);
 	if (f_v) {
 		cout << "A5_Elt1:" << endl;
@@ -2246,8 +2249,8 @@ void print_4x4_as_2x2(action *A2, finite_field *Fq, INT *mtx4x4)
 {
 	INT small[8], f_switch, r, order;
 	INT *elt1;
-		
-	elt1 = NEW_INT(A2->elt_size_in_INT);	
+
+	elt1 = NEW_INT(A2->elt_size_in_INT);
 	O4_isomorphism_4to2(Fq, small, small + 4, f_switch, mtx4x4, 0/*verbose_level*/);
 	cout << "after isomorphism:" << endl;
 	cout << "f_switch=" << f_switch << endl;
@@ -2262,7 +2265,7 @@ void print_4x4_as_2x2(action *A2, finite_field *Fq, INT *mtx4x4)
 		cout << endl;
 		A2->element_print_quick(elt1, cout);
 		cout << endl;
-		
+
 		}
 	FREE_INT(elt1);
 }
@@ -2293,10 +2296,10 @@ void determine_conic(INT q, const BYTE *override_poly, INT *input_pts, INT nb_pt
 	if (f_vv) {
 		cout << "determine_conic before P->init" << endl;
 		}
-	P->init(len - 1, &F, 
-		//f_with_group, FALSE /* f_line_action */, 
-		FALSE, 
-		//f_semilinear, f_basis, 
+	P->init(len - 1, &F,
+		//f_with_group, FALSE /* f_line_action */,
+		FALSE,
+		//f_semilinear, f_basis,
 		verbose_level - 2/*MINIMUM(2, verbose_level)*/);
 
 	if (f_vv) {
@@ -2309,11 +2312,11 @@ void determine_conic(INT q, const BYTE *override_poly, INT *input_pts, INT nb_pt
 		INT_vec_print(cout, six_coeffs, 6);
 		cout << endl;
 		}
-	
+
 	INT points[1000];
 	INT nb_points;
 	//INT v[3];
-	
+
 	P->conic_points(input_pts, six_coeffs, points, nb_points, verbose_level - 2);
 	if (f_v) {
 		cout << "the " << nb_points << " conic points are: ";
@@ -2329,7 +2332,7 @@ void determine_conic(INT q, const BYTE *override_poly, INT *input_pts, INT nb_pt
 	delete P;
 }
 
-void andre_preimage(projective_space *P2, projective_space *P4, 
+void andre_preimage(projective_space *P2, projective_space *P4,
 	INT *set2, INT sz2, INT *set4, INT &sz4, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -2355,10 +2358,10 @@ void andre_preimage(projective_space *P2, projective_space *P4,
 		//FQ->print(TRUE /* f_add_mult_table */);
 		}
 
-	
+
 	Fq = P4->F;
 	q = Fq->q;
-	
+
 	v = NEW_INT(3);
 	w1 = NEW_INT(5);
 	w2 = NEW_INT(5);
@@ -2369,25 +2372,25 @@ void andre_preimage(projective_space *P2, projective_space *P4,
 		cout << "e=" << e << endl;
 		}
 
-	FQ->subfield_embedding_2dimensional(*Fq, 
+	FQ->subfield_embedding_2dimensional(*Fq,
 		components, embedding, pair_embedding, verbose_level - 3);
 
-		// we think of FQ as two dimensional vector space 
+		// we think of FQ as two dimensional vector space
 		// over Fq with basis (1,alpha)
-		// for i,j \in Fq, with x = i + j * alpha \in FQ, we have 
+		// for i,j \in Fq, with x = i + j * alpha \in FQ, we have
 		// pair_embedding[i * q + j] = x;
-		// also, 
+		// also,
 		// components[x * 2 + 0] = i;
 		// components[x * 2 + 1] = j;
-		// also, for i \in Fq, embedding[i] is the element 
-		// in FQ that corresponds to i 
-		
+		// also, for i \in Fq, embedding[i] is the element
+		// in FQ that corresponds to i
+
 		// components[Q * 2]
 		// embedding[q]
 		// pair_embedding[q * q]
 
 	if (f_vv) {
-		FQ->print_embedding(*Fq, 
+		FQ->print_embedding(*Fq,
 			components, embedding, pair_embedding);
 		}
 
@@ -2407,19 +2410,19 @@ void andre_preimage(projective_space *P2, projective_space *P4,
 		if (v[2] == 0) {
 
 			// we are dealing with a point on the line at infinity.
-			// Such a point corresponds to a line of the spread. 
+			// Such a point corresponds to a line of the spread.
 			// We create the line and then create all q + 1 points on that line.
-			
+
 			if (f_vv) {
 				cout << endl;
 				}
 			// w1[4] is the GF(q)-vector corresponding to the GF(q^2)-vector v[2]
 			// w2[4] is the GF(q)-vector corresponding to the GF(q^2)-vector v[2] * alpha
-			// where v[2] runs through the points of PG(1,q^2). 
-			// That way, w1[4] and w2[4] are a GF(q)-basis for the 
-			// 2-dimensional subspace v[2] (when viewed over GF(q)), 
+			// where v[2] runs through the points of PG(1,q^2).
+			// That way, w1[4] and w2[4] are a GF(q)-basis for the
+			// 2-dimensional subspace v[2] (when viewed over GF(q)),
 			// which is an element of the regular spread.
-						
+
 			for (h = 0; h < 2; h++) {
 				a = v[h];
 				a0 = components[a * 2 + 0];
@@ -2439,11 +2442,11 @@ void andre_preimage(projective_space *P2, projective_space *P4,
 				INT_vec_print(cout, w2, 4);
 				cout << endl;
 				}
-			
+
 			// now we create all points on the line spanned by w1[4] and w2[4]:
 			// There are q + 1 of these points.
 			// We make sure that the coordinate vectors have a zero in the last spot.
-			
+
 			for (h = 0; h < q + 1; h++) {
 				PG_element_unrank_modified(*Fq, v2, 1, 2, h);
 				if (FALSE) {
@@ -2492,7 +2495,7 @@ void andre_preimage(projective_space *P2, projective_space *P4,
 			}
 		}
 	if (f_v) {
-		cout << "we found " << sz4 << " points:" << endl;	
+		cout << "we found " << sz4 << " points:" << endl;
 		INT_vec_print(cout, set4, sz4);
 		cout << endl;
 		P4->print_set(set4, sz4);
@@ -2512,8 +2515,8 @@ void andre_preimage(projective_space *P2, projective_space *P4,
 }
 
 
-INT reverse_engineer_semilinear_map(action *A, projective_space *P, 
-	INT *Elt, INT *Mtx, INT &frobenius, 
+INT reverse_engineer_semilinear_map(action *A, projective_space *P,
+	INT *Elt, INT *Mtx, INT &frobenius,
 	INT verbose_level)
 // uses the function A->element_image_of
 {
@@ -2526,7 +2529,7 @@ INT reverse_engineer_semilinear_map(action *A, projective_space *P,
 	INT q, h, hh, i, j, l, e, frobenius_inv, lambda, rk, c, cv;
 	INT *system;
 	INT *base_cols;
-	
+
 
 	if (f_v) {
 		cout << "reverse_engineer_semilinear_map" << endl;
@@ -2535,14 +2538,14 @@ INT reverse_engineer_semilinear_map(action *A, projective_space *P,
 		}
 	F = P->F;
 	q = F->q;
-	
+
 	v1 = NEW_INT(d);
 	v2 = NEW_INT(d);
 	v1_save = NEW_INT(d);
 	w1 = NEW_INT(d);
 	w2 = NEW_INT(d);
 	w1_save = NEW_INT(d);
-	
+
 
 
 	if (f_v) {
@@ -2556,7 +2559,7 @@ INT reverse_engineer_semilinear_map(action *A, projective_space *P,
 				}
 			else {
 				v1[h] = 0;
-				}				
+				}
 			}
 		INT_vec_copy(v1, v1_save, d);
 #if 0
@@ -2661,7 +2664,7 @@ INT reverse_engineer_semilinear_map(action *A, projective_space *P,
 				}
 			else {
 				v1[h] = 0;
-				}				
+				}
 			}
 		INT_vec_copy(v1, v1_save, d);
 #if 0
@@ -2716,7 +2719,7 @@ INT reverse_engineer_semilinear_map(action *A, projective_space *P,
 		if (f_vv) {
 			cout << "lambda=" << lambda << endl;
 			}
-			
+
 
 		l = F->log_alpha(lambda);
 		if (f_vv) {
@@ -2784,7 +2787,7 @@ static void print_from_to(INT d, INT i, INT j, INT *v1, INT *v2)
 
 
 sims *set_stabilizer_in_projective_space(
-	action *A_linear, projective_space *P, 
+	action *A_linear, projective_space *P,
 	INT *set, INT set_size, INT verbose_level)
 // added 2/28/2011, called from analyze.C
 // November 17, 2014 moved here from TOP_LEVEL/extra.C
@@ -2848,7 +2851,7 @@ sims *set_stabilizer_in_projective_space(
 			Incma[i * nb_cols + P->N_lines + j] = 0;
 			}
 		}
-	
+
 	// last row, make zero:
 	for (j = 0; j < nb_cols; j++) {
 		Incma[P->N_points * nb_cols + j] = 0;
@@ -2873,7 +2876,7 @@ sims *set_stabilizer_in_projective_space(
 				cout << "h=" << h << " idx=" << idx << " f=" << f << " l=" << l << " i=" << i << endl;
 				}
 			Incma[i * nb_cols + P->N_lines + j] = 1;
-			}	
+			}
 #if 0
 		for (h = 0; h < set_size; h++) {
 			i = set[h];
@@ -2917,14 +2920,14 @@ sims *set_stabilizer_in_projective_space(
 	Aut = NEW_INT(N * N);
 	Base = NEW_INT(N);
 	Transversal_length = NEW_INT(N);
-	
+
 	if (f_v) {
 		cout << "set_stabilizer_in_projective_space, calling nauty_interface_matrix_INT" << endl;
 		}
-	nauty_interface_matrix_INT(Incma, nb_rows, nb_cols, 
-		labeling, partition, 
-		Aut, Aut_counter, 
-		Base, Base_length, 
+	nauty_interface_matrix_INT(Incma, nb_rows, nb_cols,
+		labeling, partition,
+		Aut, Aut_counter,
+		Base, Base_length,
 		Transversal_length, Ago, verbose_level - 1);
 	if (f_v) {
 		cout << "set_stabilizer_in_projective_space, done with nauty_interface_matrix_INT, Ago=" << Ago << endl;
@@ -2936,8 +2939,8 @@ sims *set_stabilizer_in_projective_space(
 
 	A_perm = new action;
 
-	A_perm->init_permutation_group_from_generators(N, 
-		Aut_counter, Aut, 
+	A_perm->init_permutation_group_from_generators(N,
+		Aut_counter, Aut,
 		Base_length, Base,
 		verbose_level - 2);
 
@@ -2965,16 +2968,16 @@ sims *set_stabilizer_in_projective_space(
 	Elt1 = NEW_INT(A_linear->elt_size_in_INT);
 
 	d = P->n + 1;
-	
+
 	gens = A_perm->Strong_gens->gens;
 	//gens = A->strong_generators;
 
 	gens1 = new vector_ge;
 	gens1->init(A_linear);
 	gens1->allocate(gens->len);
-	
+
 	Mtx = NEW_INT(d * d + 1); // leave space for frobenius
-	
+
 	pos = 0;
 	for (g = 0; g < gens->len; g++) {
 		if (f_vv) {
@@ -2982,9 +2985,9 @@ sims *set_stabilizer_in_projective_space(
 			A_perm->element_print(gens->ith(g), cout);
 			cout << endl;
 			}
-		
-		if (reverse_engineer_semilinear_map(A_perm, P, 
-			gens->ith(g), Mtx, frobenius, 
+
+		if (reverse_engineer_semilinear_map(A_perm, P,
+			gens->ith(g), Mtx, frobenius,
 			verbose_level - 2)) {
 
 			Mtx[d * d] = frobenius;
@@ -2994,7 +2997,7 @@ sims *set_stabilizer_in_projective_space(
 				A_linear->element_print(Elt1, cout);
 				}
 			A_linear->element_move(Elt1, gens1->ith(pos), 0);
-		
+
 
 			pos++;
 			}
@@ -3012,13 +3015,13 @@ sims *set_stabilizer_in_projective_space(
 	if (f_vv) {
 		gens1->print(cout);
 		}
-	
+
 
 	if (f_v) {
 		cout << "set_stabilizer_in_projective_space: we are now testing the generators:" << endl;
 		}
 	INT *v, *w, *z, *zz, j1, j2;
-	
+
 	v = NEW_INT(d);
 	w = NEW_INT(d);
 	z = NEW_INT(d);
@@ -3054,7 +3057,7 @@ sims *set_stabilizer_in_projective_space(
 		cout << "set_stabilizer_in_projective_space: we are now creating the group" << endl;
 		}
 
-	S = create_sims_from_generators_without_target_group_order(A_linear, 
+	S = create_sims_from_generators_without_target_group_order(A_linear,
 		gens1, verbose_level - 4);
 	S->group_order(go);
 	if (f_v) {
@@ -3105,8 +3108,8 @@ void projective_space_init_line_action(projective_space *P, action *A_points, ac
 	AoL = NEW_OBJECT(action_on_grassmannian);
 
 	AoL->init(*A_points, P->Grass_lines, verbose_level - 5);
-	
-	
+
+
 	if (f_v) {
 		cout << "projective_space_init_line_action action on grassmannian established" << endl;
 		}
@@ -3125,11 +3128,11 @@ void projective_space_init_line_action(projective_space *P, action *A_points, ac
 	if (f_v) {
 		cout << "projective_space_init_line_action group order " << go1 << endl;
 		}
-	
+
 	if (f_v) {
 		cout << "projective_space_init_line_action initializing action on grassmannian" << endl;
 		}
-	A_on_lines->induced_action_on_grassmannian(A_points, AoL, 
+	A_on_lines->induced_action_on_grassmannian(A_points, AoL,
 		f_induce_action, &S, verbose_level);
 	if (f_v) {
 		cout << "projective_space_init_line_action initializing A_on_lines done" << endl;
@@ -3147,7 +3150,7 @@ void projective_space_init_line_action(projective_space *P, action *A_points, ac
 		}
 }
 
-void color_distribution_matrix(action *A, INT *Elt, INT n, UBYTE *Adj, INT *colors, classify *C, 
+void color_distribution_matrix(action *A, INT *Elt, INT n, UBYTE *Adj, INT *colors, classify *C,
 	INT *&Mtx, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -3156,17 +3159,17 @@ void color_distribution_matrix(action *A, INT *Elt, INT n, UBYTE *Adj, INT *colo
 	if (f_v) {
 		cout << "color_distribution_matrix" << endl;
 		}
-	
+
 	Mtx = NEW_INT(C->nb_types * C->nb_types);
 	INT_vec_zero(Mtx, C->nb_types * C->nb_types);
-	
+
 	for (i = 0; i < n; i++) {
 		ci = C->class_of(i);
 		j = A->element_image_of(i, Elt, 0 /* verbose_level */);
 		cj = C->class_of(j);
 		Mtx[ci * C->nb_types + cj]++;
 		}
-	
+
 	if (f_v) {
 		cout << "color_distribution_matrix done" << endl;
 		}
@@ -3187,17 +3190,17 @@ void test_color_distribution(action *A, vector_ge *gens, INT n, UBYTE *Adj, INT 
 	classify C;
 
 	C.init(colors, n, FALSE, 0);
-	
+
 	l = gens->len;
 	for (h = 0; h < l; h++) {
 		Elt = gens->ith(h);
-		color_distribution_matrix(A, Elt, n, Adj, colors, &C, 
+		color_distribution_matrix(A, Elt, n, Adj, colors, &C,
 			Mtx, verbose_level - 2);
 		if (f_vv) {
 			cout << "generator " << h << " has the following color distribution matrix:" << endl;
 			INT_matrix_print(Mtx, C.nb_types, C.nb_types);
 			}
-		
+
 		FREE_INT(Mtx);
 		}
 
@@ -3226,19 +3229,19 @@ void color_preserving_subgroup(action *A, INT n, UBYTE *Adj, INT *colors, sims *
 	classify C;
 
 	C.init(colors, n, FALSE, 0);
-	
+
 	S = A->Sims;
 	Elt = NEW_INT(A->elt_size_in_INT);
-	
+
 	go = S->group_order_INT();
 	Subgrp = NEW_INT(go);
 	sz = 0;
 
 	for (h = 0; h < go; h++) {
 		INT *Mtx;
-		
+
 		S->element_unrank_INT(h, Elt);
-		color_distribution_matrix(A, Elt, n, Adj, colors, &C, 
+		color_distribution_matrix(A, Elt, n, Adj, colors, &C,
 			Mtx, verbose_level - 2);
 
 		if (f_vv) {
@@ -3258,14 +3261,14 @@ void color_preserving_subgroup(action *A, INT n, UBYTE *Adj, INT *colors, sims *
 		INT_vec_print(cout, Subgrp, sz);
 		cout << endl;
 		}
-	
+
 	gens = new vector_ge;
 	gens->init(A);
 	gens->allocate(sz);
 	for (h = 0; h < sz; h++) {
 		S->element_unrank_INT(Subgrp[h], gens->ith(h));
 		}
-	
+
 	Subgroup = new sims;
 	K = new sims;
 	Go.create(sz);
@@ -3273,12 +3276,12 @@ void color_preserving_subgroup(action *A, INT n, UBYTE *Adj, INT *colors, sims *
 	K->init(A);
 	Subgroup->init_trivial_group(verbose_level);
 	K->init_trivial_group(verbose_level);
-	Subgroup->build_up_group_from_generators(K, gens, 
-		TRUE /* f_target_go */, &Go, 
+	Subgroup->build_up_group_from_generators(K, gens,
+		TRUE /* f_target_go */, &Go,
 		FALSE /* f_override_choose_next_base_point */,
-		NULL, 
+		NULL,
 		verbose_level);
-	
+
 
 	FREE_INT(Elt);
 	FREE_INT(Subgrp);
@@ -3338,8 +3341,8 @@ INT test_automorphism_group_of_graph_bitvec(action *A, INT n, UBYTE *Adj, INT ve
 	return TRUE;
 }
 
-void compute_conjugacy_classes(sims *S, action *&Aconj, action_by_conjugation *&ABC, schreier *&Sch, 
-	strong_generators *&SG, INT &nb_classes, INT *&class_size, INT *&class_rep, 
+void compute_conjugacy_classes(sims *S, action *&Aconj, action_by_conjugation *&ABC, schreier *&Sch,
+	strong_generators *&SG, INT &nb_classes, INT *&class_size, INT *&class_rep,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -3353,13 +3356,13 @@ void compute_conjugacy_classes(sims *S, action *&Aconj, action_by_conjugation *&
 	if (f_v) {
 		cout << "Creating action by conjugation" << endl;
 		}
-	
-	Aconj->induced_action_by_conjugation(S, 
+
+	Aconj->induced_action_by_conjugation(S,
 		S, FALSE /* f_ownership */, FALSE /* f_basis */, verbose_level - 1);
 
 	if (f_v) {
 		cout << "Creating action by conjugation done" << endl;
-		}	
+		}
 
 	ABC = Aconj->G.ABC;
 
@@ -3372,7 +3375,7 @@ void compute_conjugacy_classes(sims *S, action *&Aconj, action_by_conjugation *&
 	SG = new strong_generators;
 
 	SG->init_from_sims(S, 0);
-	
+
 
 	Sch->init_generators(*SG->gens);
 
@@ -3380,13 +3383,13 @@ void compute_conjugacy_classes(sims *S, action *&Aconj, action_by_conjugation *&
 		cout << "Computing conjugacy classes:" << endl;
 		}
 	Sch->compute_all_point_orbits(verbose_level);
-	
+
 
 	nb_classes = Sch->nb_orbits;
 
 	class_size = NEW_INT(nb_classes);
 	class_rep = NEW_INT(nb_classes);
-	
+
 	for (i = 0; i < nb_classes; i++) {
 		class_size[i] = Sch->orbit_len[i];
 		f = Sch->orbit_first[i];

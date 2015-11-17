@@ -31,8 +31,8 @@ void action::init_action_on_lines(action *A, finite_field *F, INT n, INT verbose
 		cout << "action::init_action_on_lines before A_lines->init" << endl;
 		}
 	A_lines->init(*A, Grass_lines, verbose_level - 5);
-	
-	
+
+
 	if (f_v) {
 		cout << "action::init_action_on_lines action on grassmannian established" << endl;
 		}
@@ -50,11 +50,11 @@ void action::init_action_on_lines(action *A, finite_field *F, INT n, INT verbose
 	if (f_v) {
 		cout << "action::init_action_on_lines group order " << go1 << endl;
 		}
-	
+
 	if (f_v) {
 		cout << "action::init_action_on_lines initializing action on grassmannian" << endl;
 		}
-	induced_action_on_grassmannian(A, A_lines, 
+	induced_action_on_grassmannian(A, A_lines,
 		TRUE /* f_induce_action */, &S, verbose_level);
 	if (f_v) {
 		cout << "action::init_action_on_lines after induced_action_on_grassmannian" << endl;
@@ -69,25 +69,25 @@ void action::init_action_on_lines(action *A, finite_field *F, INT n, INT verbose
 }
 
 
-void action::induced_action_by_representation_on_conic(action *A_old, 
-	INT f_induce_action, sims *old_G, 
+void action::induced_action_by_representation_on_conic(action *A_old,
+	INT f_induce_action, sims *old_G,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action *A;
 	action_by_representation *Rep; // do not free
 	matrix_group *M;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_by_representation_on_conic f_induce_action=" << f_induce_action << endl;
 		}
-	
+
 	A = A_old;
 	sprintf(group_prefix, "%s_RepOnConic", A->label);
 	sprintf(label, "%s_RepOnConic", A->label);
 	sprintf(label_tex, "%s RepOnConic", A->label_tex);
 	if (f_v) {
-		cout << "the old_action " << A->label << " has base_length = " << A->base_len 
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
 			<< " and degree " << A->degree << endl;
 		}
 	f_has_subaction = TRUE;
@@ -106,20 +106,20 @@ void action::induced_action_by_representation_on_conic(action *A_old,
 	f_allocated = TRUE;
 	make_element_size = A->make_element_size;
 	low_level_point_size = Rep->low_level_point_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = Rep->degree;
 	base_len = 0;
 	init_function_pointers_induced_action();
-	
-	
-	
+
+
+
 	elt_size_in_INT = A->elt_size_in_INT;
 	coded_elt_size_in_char = A->coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_induce_action) {
 		induced_action_override_sims(*A, old_G, 0/*verbose_level - 2*/);
 		}
@@ -134,14 +134,14 @@ void action::induced_action_by_representation_on_conic(action *A_old,
 }
 
 
-void action::induced_action_on_cosets(action_on_cosets *A_on_cosets, 
-	INT f_induce_action, sims *old_G, 
+void action::induced_action_on_cosets(action_on_cosets *A_on_cosets,
+	INT f_induce_action, sims *old_G,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action *A;
 	matrix_group *M;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_cosets f_induce_action=" << f_induce_action << endl;
 		}
@@ -150,7 +150,7 @@ void action::induced_action_on_cosets(action_on_cosets *A_on_cosets,
 	sprintf(label, "%s_Cosets_%ld", A->label, A_on_cosets->dimension_of_subspace);
 	sprintf(label_tex, "%s Cosets_%ld", A->label_tex, A_on_cosets->dimension_of_subspace);
 	if (f_v) {
-		cout << "the old_action " << A->label << " has base_length = " << A->base_len 
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
 			<< " and degree " << A->degree << endl;
 		}
 	f_has_subaction = TRUE;
@@ -171,20 +171,20 @@ void action::induced_action_on_cosets(action_on_cosets *A_on_cosets,
 	f_allocated = FALSE;
 	make_element_size = A->make_element_size;
 	low_level_point_size = A->low_level_point_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = A_on_cosets->nb_points;
 	base_len = 0;
 	init_function_pointers_induced_action();
-	
-	
-	
+
+
+
 	elt_size_in_INT = A->elt_size_in_INT;
 	coded_elt_size_in_char = A->coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_induce_action) {
 		induced_action_override_sims(*A, old_G, verbose_level - 2);
 		}
@@ -198,15 +198,15 @@ void action::induced_action_on_cosets(action_on_cosets *A_on_cosets,
 
 
 
-void action::induced_action_on_factor_space(action *A_old, 
-	action_on_factor_space *AF, 
-	INT f_induce_action, sims *old_G, 
+void action::induced_action_on_factor_space(action *A_old,
+	action_on_factor_space *AF,
+	INT f_induce_action, sims *old_G,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action *A;
 	matrix_group *M;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_factor_space f_induce_action=" << f_induce_action << endl;
 		}
@@ -215,7 +215,7 @@ void action::induced_action_on_factor_space(action *A_old,
 	sprintf(label, "%s_Factorspace_%ld_%ld_%ld", A->label, AF->len, AF->factor_space_len, AF->F->q);
 	sprintf(label_tex, "%s Factorspace_%ld_%ld_%ld", A->label_tex, AF->len, AF->factor_space_len, AF->F->q);
 	if (f_v) {
-		cout << "the old_action " << A->label << " has base_length = " << A->base_len 
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
 			<< " and degree " << A->degree << endl;
 		}
 	f_has_subaction = TRUE;
@@ -236,20 +236,20 @@ void action::induced_action_on_factor_space(action *A_old,
 	f_allocated = FALSE;
 	make_element_size = A->make_element_size;
 	low_level_point_size = A->low_level_point_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = AF->degree;
 	base_len = 0;
 	init_function_pointers_induced_action();
-	
-	
-	
+
+
+
 	elt_size_in_INT = A->elt_size_in_INT;
 	coded_elt_size_in_char = A->coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_induce_action) {
 		induced_action_override_sims(*A, old_G, verbose_level - 2);
 		}
@@ -262,15 +262,15 @@ void action::induced_action_on_factor_space(action *A_old,
 }
 
 
-void action::induced_action_on_grassmannian(action *A_old, 
-	action_on_grassmannian *AG, 
-	INT f_induce_action, sims *old_G, 
+void action::induced_action_on_grassmannian(action *A_old,
+	action_on_grassmannian *AG,
+	INT f_induce_action, sims *old_G,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action *A;
 	matrix_group *M;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_grassmannian f_induce_action=" << f_induce_action << endl;
 		}
@@ -279,7 +279,7 @@ void action::induced_action_on_grassmannian(action *A_old,
 	sprintf(label, "%s_Grassmann_%ld_%ld_%ld", A->label, AG->n, AG->k, AG->q);
 	sprintf(label_tex, "%s Grassmann_%ld_%ld_%ld", A->label_tex, AG->n, AG->k, AG->q);
 	if (f_v) {
-		cout << "the old_action " << A->label << " has base_length = " << A->base_len 
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
 			<< " and degree " << A->degree << endl;
 		}
 	f_has_subaction = TRUE;
@@ -313,26 +313,26 @@ void action::induced_action_on_grassmannian(action *A_old,
 	f_allocated = FALSE;
 	make_element_size = A->make_element_size;
 	low_level_point_size = AG->low_level_point_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = AG->degree.as_INT();
 	base_len = 0;
 	if (f_v) {
 		cout << "action::induced_action_on_grassmannian before init_function_pointers_induced_action" << endl;
 		}
 	init_function_pointers_induced_action();
-	
-	
-	
+
+
+
 	elt_size_in_INT = A->elt_size_in_INT;
 	coded_elt_size_in_char = A->coded_elt_size_in_char;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_grassmannian before allocate_element_data" << endl;
 		}
 	allocate_element_data();
-	
+
 	if (f_induce_action) {
 		if (f_v) {
 			cout << "action::induced_action_on_grassmannian before induced_action_override_sims" << endl;
@@ -349,15 +349,103 @@ void action::induced_action_on_grassmannian(action *A_old,
 		}
 }
 
-void action::induced_action_on_spread_set(action *A_old, 
-	action_on_spread_set *AS, 
-	INT f_induce_action, sims *old_G, 
+void action::induced_action_on_subspaces(action *A_old,
+	action_on_subspaces *Asub,
+	INT f_induce_action, sims *old_G,
+	INT verbose_level)
+{
+	INT f_v = (verbose_level >= 1);
+	action *A;
+	matrix_group *M;
+
+	if (f_v) {
+		cout << "action::induced_action_on_subspaces f_induce_action=" << f_induce_action << endl;
+		}
+	A = A_old;
+	sprintf(group_prefix, "%s_subspaces_%ld_%ld", A->label, Asub->n, Asub->q);
+	sprintf(label, "%s_subspaces_%ld_%ld", A->label, Asub->n, Asub->q);
+	sprintf(label_tex, "%s subspaces_%ld_%ld", A->label_tex, Asub->n, Asub->q);
+	if (f_v) {
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
+			<< " and degree " << A->degree << endl;
+		}
+	f_has_subaction = TRUE;
+	if (f_v) {
+		cout << "action::induced_action_on_subspaces before subaction = A" << endl;
+		}
+	subaction = A;
+	if (!A->f_is_linear) {
+		cout << "action::induced_action_on_subspaces action not of linear type" << endl;
+		exit(1);
+		}
+
+	if (f_v) {
+		cout << "action::induced_action_on_subspaces action is of linear type" << endl;
+		}
+	if (A->type_G == matrix_group_t) {
+		if (f_v) {
+			cout << "action::induced_action_on_subspaces A->type_G == matrix_group_t" << endl;
+			}
+		M = A->G.matrix_grp;
+		}
+	else {
+		if (f_v) {
+			cout << "action::induced_action_on_subspaces A->type_G != matrix_group_t" << endl;
+			}
+		action *sub = A->subaction;
+		M = sub->G.matrix_grp;
+		}
+	type_G = action_on_subspaces_t;
+	G.Asub = Asub;
+	f_allocated = FALSE;
+	make_element_size = A->make_element_size;
+ 	low_level_point_size = Asub->low_level_point_size;
+
+	f_has_strong_generators = FALSE;
+
+	degree = Asub->S->nb_of_subspaces(verbose_level-1);
+	base_len = 0;
+	if (f_v) {
+		cout << "action::induced_action_on_subspaces before init_function_pointers_induced_action" << endl;
+		}
+	init_function_pointers_induced_action();
+
+
+
+	elt_size_in_INT = A->elt_size_in_INT;
+	coded_elt_size_in_char = A->coded_elt_size_in_char;
+
+	if (f_v) {
+		cout << "action::induced_action_on_subspaces before allocate_element_data" << endl;
+		}
+	allocate_element_data();
+
+	if (f_induce_action) {
+		if (f_v) {
+			cout << "action::induced_action_on_subspaces before induced_action_override_sims" << endl;
+			}
+		induced_action_override_sims(*A, old_G, verbose_level);
+		}
+
+	if (f_v) {
+		cout << "action::induced_action_on_subspaces finished, created action " << label << endl;
+		cout << "degree=" << degree << endl;
+		cout << "make_element_size=" << make_element_size << endl;
+		cout << "low_level_point_size=" << low_level_point_size << endl;
+		print_info();
+		}
+}
+
+
+void action::induced_action_on_spread_set(action *A_old,
+	action_on_spread_set *AS,
+	INT f_induce_action, sims *old_G,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action *A;
 	//matrix_group *M;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_spread_set f_induce_action=" << f_induce_action << endl;
 		}
@@ -366,7 +454,7 @@ void action::induced_action_on_spread_set(action *A_old,
 	sprintf(label, "%s_SpreadSet_%ld_%ld", A->label, AS->k, AS->q);
 	sprintf(label_tex, "%s SpreadSet_%ld_%ld", A->label_tex, AS->k, AS->q);
 	if (f_v) {
-		cout << "the old_action " << A->label << " has base_length = " << A->base_len 
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
 			<< " and degree " << A->degree << endl;
 		}
 	f_has_subaction = TRUE;
@@ -388,26 +476,26 @@ void action::induced_action_on_spread_set(action *A_old,
 
 	f_is_linear = TRUE;
 
-	
+
 	type_G = action_on_spread_set_t;
 	G.AS = AS;
 	f_allocated = FALSE;
 	make_element_size = A->make_element_size;
 	low_level_point_size = AS->low_level_point_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = AS->degree;
 	base_len = 0;
 	init_function_pointers_induced_action();
-	
-	
-	
+
+
+
 	elt_size_in_INT = A->elt_size_in_INT;
 	coded_elt_size_in_char = A->coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_induce_action) {
 		induced_action_override_sims(*A, old_G, 0/*verbose_level - 2*/);
 		}
@@ -421,15 +509,15 @@ void action::induced_action_on_spread_set(action *A_old,
 		}
 }
 
-void action::induced_action_on_orthogonal(action *A_old, 
-	action_on_orthogonal *AO, 
-	INT f_induce_action, sims *old_G, 
+void action::induced_action_on_orthogonal(action *A_old,
+	action_on_orthogonal *AO,
+	INT f_induce_action, sims *old_G,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action *A;
 	matrix_group *M;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_orthogonal f_induce_action=" << f_induce_action << endl;
 		}
@@ -450,7 +538,7 @@ void action::induced_action_on_orthogonal(action *A_old,
 		sprintf(label_tex, "%s orthogonal_on_points_and_lines_%ld_%ld_%ld", A->label_tex, AO->O->epsilon, AO->O->n, AO->O->q);
 		}
 	if (f_v) {
-		cout << "the old_action " << A->label << " has base_length = " << A->base_len 
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
 			<< " and degree " << A->degree << endl;
 		}
 	f_has_subaction = TRUE;
@@ -471,20 +559,20 @@ void action::induced_action_on_orthogonal(action *A_old,
 	f_allocated = TRUE;
 	make_element_size = A->make_element_size;
 	low_level_point_size = AO->low_level_point_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = AO->degree;
 	base_len = 0;
 	init_function_pointers_induced_action();
-	
-	
-	
+
+
+
 	elt_size_in_INT = A->elt_size_in_INT;
 	coded_elt_size_in_char = A->coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_induce_action) {
 		induced_action_override_sims(*A, old_G, 0/*verbose_level - 2*/);
 		}
@@ -498,15 +586,15 @@ void action::induced_action_on_orthogonal(action *A_old,
 		}
 }
 
-void action::induced_action_on_wedge_product(action *A_old, 
-	action_on_wedge_product *AW, 
-	INT f_induce_action, sims *old_G, 
+void action::induced_action_on_wedge_product(action *A_old,
+	action_on_wedge_product *AW,
+	INT f_induce_action, sims *old_G,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action *A;
 	matrix_group *M;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_wedge_product f_induce_action=" << f_induce_action << endl;
 		}
@@ -515,7 +603,7 @@ void action::induced_action_on_wedge_product(action *A_old,
 	sprintf(label, "%s_Wedge", A->label);
 	sprintf(label_tex, "%s Wedge", A->label_tex);
 	if (f_v) {
-		cout << "the old_action " << A->label << " has base_length = " << A->base_len 
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
 			<< " and degree " << A->degree << endl;
 		}
 	f_has_subaction = TRUE;
@@ -530,22 +618,22 @@ void action::induced_action_on_wedge_product(action *A_old,
 	f_allocated = TRUE;
 	make_element_size = A->make_element_size;
 	low_level_point_size = AW->low_level_point_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = AW->degree;
 	base_len = 0;
 	init_function_pointers_induced_action();
 	f_is_linear = TRUE;
 	dimension = AW->wedge_dimension;
-	
-	
-	
+
+
+
 	elt_size_in_INT = A->elt_size_in_INT;
 	coded_elt_size_in_char = A->coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_induce_action) {
 		induced_action_override_sims(*A, old_G, 0/*verbose_level - 2*/);
 		}
@@ -559,15 +647,15 @@ void action::induced_action_on_wedge_product(action *A_old,
 		}
 }
 
-void action::induced_action_by_subfield_structure(action *A_old, 
-	action_by_subfield_structure *SubfieldStructure, 
-	INT f_induce_action, sims *old_G, 
+void action::induced_action_by_subfield_structure(action *A_old,
+	action_by_subfield_structure *SubfieldStructure,
+	INT f_induce_action, sims *old_G,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action *A;
 	matrix_group *M;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_by_subfield_structure f_induce_action=" << f_induce_action << endl;
 		}
@@ -576,7 +664,7 @@ void action::induced_action_by_subfield_structure(action *A_old,
 	sprintf(label, "%s_subfield_%ld", A->label, SubfieldStructure->q);
 	sprintf(label_tex, "%s subfield %ld", A->label_tex, SubfieldStructure->q);
 	if (f_v) {
-		cout << "the old_action " << A->label << " has base_length = " << A->base_len 
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
 			<< " and degree " << A->degree << endl;
 		}
 	f_has_subaction = TRUE;
@@ -591,22 +679,22 @@ void action::induced_action_by_subfield_structure(action *A_old,
 	f_allocated = TRUE;
 	make_element_size = A->make_element_size;
 	low_level_point_size = SubfieldStructure->low_level_point_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = SubfieldStructure->degree;
 	base_len = 0;
 	init_function_pointers_induced_action();
 	f_is_linear = TRUE;
 	dimension = SubfieldStructure->m;
-	
-	
-	
+
+
+
 	elt_size_in_INT = A->elt_size_in_INT;
 	coded_elt_size_in_char = A->coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_induce_action) {
 		induced_action_override_sims(*A, old_G, 0/*verbose_level - 2*/);
 		}
@@ -627,7 +715,7 @@ void action::induced_action_on_determinant(sims *old_G, INT verbose_level)
 	action_on_determinant *AD;
 	action *A;
 	matrix_group *M;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_determinant" << endl;
 		}
@@ -636,7 +724,7 @@ void action::induced_action_on_determinant(sims *old_G, INT verbose_level)
 	sprintf(label, "%s_det", A->label);
 	sprintf(label_tex, "%s det", A->label_tex);
 	if (f_v) {
-		cout << "the old_action " << A->label << " has base_length = " << A->base_len 
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
 			<< " and degree " << A->degree << endl;
 		}
 	f_has_subaction = TRUE;
@@ -652,21 +740,21 @@ void action::induced_action_on_determinant(sims *old_G, INT verbose_level)
 	G.AD = AD;
 	f_allocated = TRUE;
 	make_element_size = A->make_element_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = AD->degree;
 	base_len = 0;
 	init_function_pointers_induced_action();
-	
+
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = A->elt_size_in_INT;
 	coded_elt_size_in_char = A->coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	induced_action_override_sims(*A, old_G, verbose_level - 2);
 	if (f_v) {
 		cout << "action::induced_action_on_determinant finished, created action " << label << endl;
@@ -674,7 +762,7 @@ void action::induced_action_on_determinant(sims *old_G, INT verbose_level)
 		}
 }
 
-void action::induced_action_by_conjugation(sims *old_G, 
+void action::induced_action_by_conjugation(sims *old_G,
 	sims *Base_group, INT f_ownership, INT f_basis, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -682,11 +770,11 @@ void action::induced_action_by_conjugation(sims *old_G,
 	longinteger_object go;
 	INT goi;
 	action *A;
-	
+
 	A = Base_group->A;
 	if (f_v) {
 		cout << "action::induced_action_by_conjugation" << endl;
-		cout << "the old_action " << A->label << " has base_length = " << A->base_len 
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
 			<< " and degree " << A->degree << endl;
 		}
 	Base_group->group_order(go);
@@ -705,21 +793,21 @@ void action::induced_action_by_conjugation(sims *old_G,
 	G.ABC = ABC;
 	f_allocated = TRUE;
 	make_element_size = A->make_element_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = goi;
 	base_len = 0;
 	init_function_pointers_induced_action();
-	
+
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = A->elt_size_in_INT;
 	coded_elt_size_in_char = A->coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_basis) {
 		if (f_v) {
 			cout << "action::induced_action_by_conjugation calling induced_action_override_sims" << endl;
@@ -732,7 +820,7 @@ void action::induced_action_by_conjugation(sims *old_G,
 		}
 }
 
-void action::induced_action_by_right_multiplication(INT f_basis, sims *old_G, 
+void action::induced_action_by_right_multiplication(INT f_basis, sims *old_G,
 	sims *Base_group, INT f_ownership, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
@@ -740,11 +828,11 @@ void action::induced_action_by_right_multiplication(INT f_basis, sims *old_G,
 	longinteger_object go;
 	INT goi;
 	action *A;
-	
+
 	A = Base_group->A;
 	if (f_v) {
 		cout << "action::induced_action_by_right_multiplication" << endl;
-		cout << "the old_action " << A->label << " has base_length = " << A->base_len 
+		cout << "the old_action " << A->label << " has base_length = " << A->base_len
 			<< " and degree " << A->degree << endl;
 		}
 	Base_group->group_order(go);
@@ -763,21 +851,21 @@ void action::induced_action_by_right_multiplication(INT f_basis, sims *old_G,
 	G.ABRM = ABRM;
 	f_allocated = TRUE;
 	make_element_size = A->make_element_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = goi;
 	base_len = 0;
 	init_function_pointers_induced_action();
-	
+
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = A->elt_size_in_INT;
 	coded_elt_size_in_char = A->coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_basis) {
 		induced_action_override_sims(*A, old_G, verbose_level - 2);
 		}
@@ -787,18 +875,18 @@ void action::induced_action_by_right_multiplication(INT f_basis, sims *old_G,
 		}
 }
 
-void action::induced_action_on_sets(action &old_action, sims *old_G, 
-	INT nb_sets, INT set_size, INT *sets, 
+void action::induced_action_on_sets(action &old_action, sims *old_G,
+	INT nb_sets, INT set_size, INT *sets,
 	INT f_induce_action, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	//INT f_vv = FALSE; // (verbose_level >= 2);
 	action_on_sets *AOS;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_sets" << endl;
 		cout << "action::induced_action_on_sets f_induce_action=" << f_induce_action << endl;
-		cout << "action::induced_action_on_sets the old_action " << old_action.label << " has base_length = " << old_action.base_len 
+		cout << "action::induced_action_on_sets the old_action " << old_action.label << " has base_length = " << old_action.base_len
 			<< " and degree " << old_action.degree << endl;
 		cout << "action::induced_action_on_sets verbose_level = " << verbose_level << endl;
 		}
@@ -820,9 +908,9 @@ void action::induced_action_on_sets(action &old_action, sims *old_G,
 	f_allocated = TRUE;
 	make_element_size = old_action.make_element_size;
 	low_level_point_size = 0;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = nb_sets;
 	base_len = 0;
 	init_function_pointers_induced_action();
@@ -830,13 +918,13 @@ void action::induced_action_on_sets(action &old_action, sims *old_G,
 		cout << "action::induced_action_on_sets calling allocate_base_data" << endl;
 		}
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = old_action.elt_size_in_INT;
 	coded_elt_size_in_char = old_action.coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_induce_action) {
 		if (f_v) {
 			cout << "action::induced_action_on_sets calling induced_action_override_sims" << endl;
@@ -854,13 +942,13 @@ void action::induced_action_on_sets(action &old_action, sims *old_G,
 		}
 }
 
-void action::induced_action_by_restriction_on_orbit_with_schreier_vector(action &old_action, 
-	INT f_induce_action, sims *old_G, 
+void action::induced_action_by_restriction_on_orbit_with_schreier_vector(action &old_action,
+	INT f_induce_action, sims *old_G,
 	INT *sv, INT pt, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action_by_restriction *ABR;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_by_restriction_on_orbit_with_schreier_vector" << endl;
 		cout << "old_action ";
@@ -875,17 +963,17 @@ void action::induced_action_by_restriction_on_orbit_with_schreier_vector(action 
 	f_has_subaction = TRUE;
 	subaction = &old_action;
 	ABR = NEW_OBJECT(action_by_restriction);
-	
+
 	ABR->init_from_sv(sv, pt, verbose_level);
-	
+
 	type_G = action_by_restriction_t;
 	G.ABR = ABR;
 	f_allocated = TRUE;
 	make_element_size = old_action.make_element_size;
 	low_level_point_size = old_action.low_level_point_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = ABR->nb_points;
 	base_len = 0;
 	init_function_pointers_induced_action();
@@ -893,13 +981,13 @@ void action::induced_action_by_restriction_on_orbit_with_schreier_vector(action 
 		cout << "action::induced_action_by_restriction_on_orbit_with_schreier_vector calling allocate_base_data" << endl;
 		}
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = old_action.elt_size_in_INT;
 	coded_elt_size_in_char = old_action.coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_induce_action) {
 		if (f_v) {
 			cout << "action::induced_action_by_restriction_on_orbit_with_schreier_vector calling induced_action_override_sims" << endl;
@@ -915,20 +1003,20 @@ void action::induced_action_by_restriction_on_orbit_with_schreier_vector(action 
 }
 
 #if 0
-void action::induced_action_by_restriction(action &old_action, sims *old_G, 
+void action::induced_action_by_restriction(action &old_action, sims *old_G,
 	INT set_size, INT *set, INT f_induce_action, INT verbose_level)
 // calls induced_action_on_sets
 {
 	INT f_v = (verbose_level >= 1);
-	
+
 	if (f_v) {
 		cout << "action::induced_action_by_restriction" << endl;
-		cout << "The old_action " << old_action.label << " has base_length = " << old_action.base_len 
+		cout << "The old_action " << old_action.label << " has base_length = " << old_action.base_len
 			<< " and degree " << old_action.degree << endl;
-		cout << "The action in old_G " << old_G->A->label << " has base_length = " << old_G->A->base_len 
+		cout << "The action in old_G " << old_G->A->label << " has base_length = " << old_G->A->base_len
 			<< " and degree " << old_G->A->degree << endl;
 		}
-	induced_action_on_sets(old_action, old_G, 
+	induced_action_on_sets(old_action, old_G,
 		set_size/* nb_sets */, 1/* set_size*/, set, f_induce_action, verbose_level - 1);
 	if (f_v) {
 		cout << "action::induced_action_by_restriction after induced_action_on_sets" << endl;
@@ -943,14 +1031,14 @@ void action::induced_action_by_restriction(action &old_action, sims *old_G,
 }
 #endif
 
-void action::induced_action_by_restriction(action &old_action, 
-	INT f_induce_action, sims *old_G, 
+void action::induced_action_by_restriction(action &old_action,
+	INT f_induce_action, sims *old_G,
 	INT nb_points, INT *points, INT verbose_level)
 // uses action_by_restriction data type
 {
 	INT f_v = (verbose_level >= 1);
 	action_by_restriction *ABR;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_by_restriction" << endl;
 		cout << "old_action ";
@@ -971,9 +1059,9 @@ void action::induced_action_by_restriction(action &old_action,
 	f_allocated = TRUE;
 	make_element_size = old_action.make_element_size;
 	low_level_point_size = old_action.low_level_point_size;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = nb_points;
 	base_len = 0;
 	init_function_pointers_induced_action();
@@ -981,13 +1069,13 @@ void action::induced_action_by_restriction(action &old_action,
 		cout << "action::induced_action_by_restriction calling allocate_base_data" << endl;
 		}
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = old_action.elt_size_in_INT;
 	coded_elt_size_in_char = old_action.coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	if (f_induce_action) {
 		if (f_v) {
 			cout << "action::induced_action_by_restriction calling induced_action_override_sims" << endl;
@@ -1002,14 +1090,14 @@ void action::induced_action_by_restriction(action &old_action,
 		}
 }
 
-void action::induced_action_on_pairs(action &old_action, sims *old_G, 
+void action::induced_action_on_pairs(action &old_action, sims *old_G,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_pairs" << endl;
-		cout << "the old_action " << old_action.label << " has base_length = " << old_action.base_len 
+		cout << "the old_action " << old_action.label << " has base_length = " << old_action.base_len
 			<< " and degree " << old_action.degree << endl;
 		}
 	sprintf(group_prefix, "%s_on_pairs", old_action.label);
@@ -1019,20 +1107,20 @@ void action::induced_action_on_pairs(action &old_action, sims *old_G,
 	subaction = &old_action;
 	type_G = action_on_pairs_t;
 	f_allocated = FALSE;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = INT_n_choose_k(old_action.degree, 2);
 	base_len = 0;
 	init_function_pointers_induced_action();
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = old_action.elt_size_in_INT;
 	coded_elt_size_in_char = old_action.coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	induced_action_override_sims(old_action, old_G, verbose_level - 2);
 	if (f_v) {
 		cout << "action::induced_action_on_pairs finished, created action " << label << endl;
@@ -1040,14 +1128,14 @@ void action::induced_action_on_pairs(action &old_action, sims *old_G,
 		}
 }
 
-void action::induced_action_on_ordered_pairs(action &old_action, sims *old_G, 
+void action::induced_action_on_ordered_pairs(action &old_action, sims *old_G,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_ordered_pairs" << endl;
-		cout << "the old_action " << old_action.label << " has base_length = " << old_action.base_len 
+		cout << "the old_action " << old_action.label << " has base_length = " << old_action.base_len
 			<< " and degree " << old_action.degree << endl;
 		}
 	sprintf(group_prefix, "%s_on_ordered_pairs", old_action.label);
@@ -1057,20 +1145,20 @@ void action::induced_action_on_ordered_pairs(action &old_action, sims *old_G,
 	subaction = &old_action;
 	type_G = action_on_ordered_pairs_t;
 	f_allocated = FALSE;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = old_action.degree * (old_action.degree - 1);
 	base_len = 0;
 	init_function_pointers_induced_action();
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = old_action.elt_size_in_INT;
 	coded_elt_size_in_char = old_action.coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	induced_action_override_sims(old_action, old_G, verbose_level - 2);
 	if (f_v) {
 		cout << "action::induced_action_on_ordered_pairs finished, created action " << label << endl;
@@ -1078,15 +1166,15 @@ void action::induced_action_on_ordered_pairs(action &old_action, sims *old_G,
 		}
 }
 
-void action::induced_action_on_k_subsets(action &old_action, INT k, 
+void action::induced_action_on_k_subsets(action &old_action, INT k,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action_on_k_subsets *On_k_subsets;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_k_subsets" << endl;
-		cout << "the old_action " << old_action.label << " has base_length = " << old_action.base_len 
+		cout << "the old_action " << old_action.label << " has base_length = " << old_action.base_len
 			<< " and degree " << old_action.degree << endl;
 		}
 	sprintf(group_prefix, "%s_on_%ld_subsets", old_action.label, k);
@@ -1103,21 +1191,21 @@ void action::induced_action_on_k_subsets(action &old_action, INT k,
 	type_G = action_on_k_subsets_t;
 	G.on_k_subsets = On_k_subsets;
 	f_allocated = TRUE;
-	
-	
+
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = On_k_subsets->degree;
 	base_len = 0;
 	init_function_pointers_induced_action();
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = old_action.elt_size_in_INT;
 	coded_elt_size_in_char = old_action.coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	//induced_action_override_sims(old_action, old_G, verbose_level - 2);
 	if (f_v) {
 		cout << "action::induced_action_on_k_subsets finished, created action " << label << endl;
@@ -1125,15 +1213,15 @@ void action::induced_action_on_k_subsets(action &old_action, INT k,
 		}
 }
 
-void action::induced_action_on_bricks(action &old_action, brick_domain *B, INT f_linear_action, 
+void action::induced_action_on_bricks(action &old_action, brick_domain *B, INT f_linear_action,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action_on_bricks *On_bricks;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_bricks" << endl;
-		cout << "the old_action " << old_action.label << " has base_length = " << old_action.base_len 
+		cout << "the old_action " << old_action.label << " has base_length = " << old_action.base_len
 			<< " and degree " << old_action.degree << endl;
 		}
 	sprintf(group_prefix, "%s_on_bricks", old_action.label);
@@ -1150,21 +1238,21 @@ void action::induced_action_on_bricks(action &old_action, brick_domain *B, INT f
 	type_G = action_on_bricks_t;
 	G.OnBricks = On_bricks;
 	f_allocated = TRUE;
-	
-	
+
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = B->nb_bricks;
 	base_len = 0;
 	init_function_pointers_induced_action();
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = old_action.elt_size_in_INT;
 	coded_elt_size_in_char = old_action.coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	//induced_action_override_sims(old_action, old_G, verbose_level - 2);
 	if (f_v) {
 		cout << "action::induced_action_on_bricks finished, created action " << label << endl;
@@ -1172,12 +1260,12 @@ void action::induced_action_on_bricks(action &old_action, brick_domain *B, INT f
 		}
 }
 
-void action::induced_action_on_andre(action *An, action *An1, andre_construction *Andre, 
+void action::induced_action_on_andre(action *An, action *An1, andre_construction *Andre,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	action_on_andre *On_andre;
-	
+
 	if (f_v) {
 		cout << "action::induced_action_on_andre" << endl;
 		cout << "action An = " << An->label << " has degree " << An->degree << endl;
@@ -1197,21 +1285,21 @@ void action::induced_action_on_andre(action *An, action *An1, andre_construction
 	type_G = action_on_andre_t;
 	G.OnAndre = On_andre;
 	f_allocated = TRUE;
-	
-	
+
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = On_andre->degree;
 	base_len = 0;
 	init_function_pointers_induced_action();
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = An1->elt_size_in_INT;
 	coded_elt_size_in_char = An1->coded_elt_size_in_char;
-	
+
 	allocate_element_data();
-	
+
 	//induced_action_override_sims(old_action, old_G, verbose_level - 2);
 	if (f_v) {
 		cout << "action::induced_action_on_andre finished, created action " << label << endl;
@@ -1225,7 +1313,7 @@ void action::setup_product_action(action *A1, action *A2, INT f_use_projections,
 	INT f_vv = (verbose_level >= 2);
 	product_action *PA;
 	INT i;
-	
+
 	if (f_v) {
 		cout << "action::setup_product_action" << endl;
 		}
@@ -1239,23 +1327,23 @@ void action::setup_product_action(action *A1, action *A2, INT f_use_projections,
 	type_G = product_action_t;
 	G.product_action_data = PA;
 	f_allocated = TRUE;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = PA->degree;
-	
+
 	base_len = 0;
-	
+
 	init_function_pointers_induced_action();
-	
+
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = PA->elt_size_in_INT;
 	coded_elt_size_in_char = PA->coded_elt_size_in_char;
-	
+
 	make_element_size = A1->make_element_size + A2->make_element_size;
-	
+
 	allocate_element_data();
 
 	base_len = A1->base_len + A2->base_len;
@@ -1276,7 +1364,7 @@ void action::setup_product_action(action *A1, action *A2, INT f_use_projections,
 			base[A1->base_len + i] = A2->base[i];
 			}
 		}
-	
+
 	if (f_vv) {
 		cout << "make_element_size=" << make_element_size << endl;
 		cout << "base_len=" << base_len << endl;
@@ -1287,38 +1375,38 @@ void action::setup_product_action(action *A1, action *A2, INT f_use_projections,
 		}
 }
 
-void action::induced_action_recycle_sims(action &old_action, 
+void action::induced_action_recycle_sims(action &old_action,
 	INT verbose_level)
 {
 	sims *old_G;
-	
+
 	if (!old_action.f_has_sims) {
 		cout << "action::induced_action_recycle_sims: old action must have sims" << endl;
 		exit(1);
 		}
 	old_G = old_action.Sims;
-	induce(&old_action, old_G, 
-		0 /* base_of_choice_len */, NULL /* base_of_choice */, 
+	induce(&old_action, old_G,
+		0 /* base_of_choice_len */, NULL /* base_of_choice */,
 		verbose_level);
 }
 
-void action::induced_action_override_sims(action &old_action, sims *old_G, 
+void action::induced_action_override_sims(action &old_action, sims *old_G,
 	INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
-	
+
 	if (f_v) {
 		cout << "action::induced_action_override_sims before induce" << endl;
 		}
-	induce(&old_action, old_G, 
-		0 /* base_of_choice_len */, NULL /* base_of_choice */, 
+	induce(&old_action, old_G,
+		0 /* base_of_choice_len */, NULL /* base_of_choice */,
 		verbose_level);
 	if (f_v) {
 		cout << "action::induced_action_override_sims done" << endl;
 		}
 }
 
-void action::induce(action *old_action, sims *old_G, 
+void action::induce(action *old_action, sims *old_G,
 	INT base_of_choice_len, INT *base_of_choice, INT verbose_level)
 // after this procedure, action will have a sims for the group and the kernel
 // it will also have strong generators
@@ -1332,7 +1420,7 @@ void action::induce(action *old_action, sims *old_G,
 	longinteger_domain D;
 	INT b, i, old_base_len;
 	action *fallback_action;
-	
+
 	if (f_v) {
 		cout << "action::induce" << endl;
 		}
@@ -1344,7 +1432,7 @@ void action::induce(action *old_action, sims *old_G,
 		}
 	//sprintf(label, "%s_ind", old_action->label);
 	//sprintf(label_tex, "%s ind", old_action->label_tex);
-	
+
 	if (old_action->subaction) {
 		if (f_vv) {
 			cout << "action::induce has subaction" << endl;
@@ -1384,15 +1472,15 @@ void action::induce(action *old_action, sims *old_G,
 			cout << "no base of choice" << endl;
 			}
 		}
-	
+
 	G = NEW_OBJECT(sims);
 	K = NEW_OBJECT(sims);
 	G->init_without_base(this);
 	if (f_v) {
 		cout << "action::induce: after G->init_without_base(this);" << endl;
 		}
-	
-	
+
+
 	if (base_of_choice_len) {
 		if (f_vv) {
 			cout << "action::induce: initializing base of choice" << endl;
@@ -1433,7 +1521,7 @@ void action::induce(action *old_action, sims *old_G,
 	if (f_v) {
 		cout << "action::induce before init_trivial_group" << endl;
 		}
-		
+
 	G->init_trivial_group(verbose_level - 2);
 	K->init_trivial_group(verbose_level - 2);
 	if (f_v) {
@@ -1441,9 +1529,9 @@ void action::induce(action *old_action, sims *old_G,
 		cout << "action::induce calling build_up_group_random_process" << endl;
 		}
 
-	G->build_up_group_random_process(K, old_G, go, 
+	G->build_up_group_random_process(K, old_G, go,
 		FALSE /*f_override_chose_next_base_point*/,
-		NULL /*choose_next_base_point_method*/, 
+		NULL /*choose_next_base_point_method*/,
 		verbose_level);
 	if (f_v) {
 		cout << "action::induce after build_up_group_random_process" << endl;
@@ -1477,7 +1565,7 @@ void action::induce(action *old_action, sims *old_G,
 	init_sims(G, verbose_level - 2);
 	f_has_kernel = TRUE;
 	Kernel = K;
-	
+
 	//init_transversal_reps_from_stabilizer_chain(G, verbose_level - 2);
 	if (f_vv) {
 		cout << "action::induce after init_sims, calling compute_strong_generators_from_sims" << endl;
@@ -1515,9 +1603,9 @@ void action::lex_least_base_in_place(INT verbose_level)
 	for (i = 0; i < base_len; i++) {
 		old_base[i] = base[i];
 		}
-	
-	
-	
+
+
+
 	for (i = 0; i < base_len; i++) {
 		set[i] = base[i];
 		if (f_v) {
@@ -1529,7 +1617,7 @@ void action::lex_least_base_in_place(INT verbose_level)
 			}
 		if (lmp >= 0 && lmp < base[i]) {
 			if (f_v) {
-				cout << "action::lex_least_base_in_place i=" << i << " least moved point = " << lmp 
+				cout << "action::lex_least_base_in_place i=" << i << " least moved point = " << lmp
 					<< " less than base point " << base[i] << endl;
 				cout << "doing a base change:" << endl;
 				}
@@ -1593,7 +1681,7 @@ void action::lex_least_base(action *old_action, INT verbose_level)
 		exit(1);
 		}
 #endif
-	
+
 
 	if (f_v) {
 		//cout << "the generators are:" << endl;
@@ -1602,14 +1690,14 @@ void action::lex_least_base(action *old_action, INT verbose_level)
 	A = NEW_OBJECT(action);
 
 	set = NEW_INT(old_action->degree);
-	
+
 	old_A = old_action;
-	
+
 	if (!old_action->f_has_sims) {
 		cout << "action::lex_least_base does not have Sims" << endl;
 		exit(1);
 		}
-	
+
 	for (i = 0; i < old_A->base_len; i++) {
 		set[i] = old_A->base[i];
 		if (f_v) {
@@ -1618,7 +1706,7 @@ void action::lex_least_base(action *old_action, INT verbose_level)
 		lmp = old_A->least_moved_point_at_level(i, verbose_level - 2);
 		if (lmp < old_A->base[i]) {
 			if (f_v) {
-				cout << "action::lex_least_base least moved point = " << lmp 
+				cout << "action::lex_least_base least moved point = " << lmp
 					<< " less than base point " << old_A->base[i] << endl;
 				cout << "doing a base change:" << endl;
 				}
@@ -1642,7 +1730,7 @@ INT action::test_if_lex_least_base(INT verbose_level)
 	INT f_v = (verbose_level >= 1);
 	action *AA;
 	INT i;
-	
+
 	if (f_v) {
 		cout << "action::test_if_lex_least_base:" << endl;
 		print_info();
@@ -1696,17 +1784,17 @@ void action::base_change_in_place(INT size, INT *set, INT verbose_level)
 	if (f_v5) {
 		cout << "action::base_change_in_place after copying base" << endl;
 		}
-	
 
-	A->Sims->A = this; 
-	A->Sims->gens.A = this; 
-	A->Sims->gens_inv.A = this; 
-		// not to forget: the sims also has an action pointer in it 
+
+	A->Sims->A = this;
+	A->Sims->gens.A = this;
+	A->Sims->gens_inv.A = this;
+		// not to forget: the sims also has an action pointer in it
 		// and this one has to be changed to the old action
 	if (f_v5) {
 		cout << "action::base_change_in_place after changing action pointer in A->Sims" << endl;
 		}
-	
+
 	if (f_has_sims) {
 		if (f_v5) {
 			cout << "action::base_change_in_place before delete Sims" << endl;
@@ -1740,7 +1828,7 @@ void action::base_change_in_place(INT size, INT *set, INT verbose_level)
 
 	A->f_has_sims = FALSE;
 	A->Sims = NULL;
-	
+
 	if (f_v5) {
 		cout << "action::base_change_in_place before delete A" << endl;
 		}
@@ -1750,7 +1838,7 @@ void action::base_change_in_place(INT size, INT *set, INT verbose_level)
 		}
 
 	compute_strong_generators_from_sims(verbose_level - 3);
-	
+
 	if (f_v) {
 		cout << "action::base_change_in_place finished, created action" << endl;
 		print_info();
@@ -1762,12 +1850,12 @@ void action::base_change_in_place(INT size, INT *set, INT verbose_level)
 
 }
 
-void action::base_change(action *old_action, 
+void action::base_change(action *old_action,
 	INT size, INT *set, INT verbose_level)
 {
 	INT f_v = (verbose_level >= 1);
 	//INT f_vv = (verbose_level >= 2);
-	
+
 	if (f_v) {
 		cout << "action::base_change to the following set:" << endl;
 		INT_vec_print(cout, set, size);
@@ -1781,24 +1869,24 @@ void action::base_change(action *old_action,
 	subaction = old_action;
 	type_G = base_change_t;
 	f_allocated = FALSE;
-	
+
 	f_has_strong_generators = FALSE;
-	
+
 	degree = old_action->degree;
 	base_len = 0;
 	init_function_pointers_induced_action();
 
 	allocate_base_data(0);
-	
-	
+
+
 	elt_size_in_INT = old_action->elt_size_in_INT;
 	coded_elt_size_in_char = old_action->coded_elt_size_in_char;
 	make_element_size = old_action->make_element_size;
 	low_level_point_size = old_action->low_level_point_size;
-	
-	
+
+
 	allocate_element_data();
-		
+
 	if (f_v) {
 		cout << "action::base_change calling induce" << endl;
 		}
@@ -1806,7 +1894,7 @@ void action::base_change(action *old_action,
 	sprintf(group_prefix, "%s_base_change", old_action->group_prefix);
 	sprintf(label, "%s_base_change", old_action->label);
 	sprintf(label_tex, "%s_base_change", old_action->label_tex);
-	
+
 	if (f_v) {
 		longinteger_object go, K_go;
 		group_order(go);
@@ -1823,5 +1911,3 @@ void action::base_change(action *old_action,
 		Sims->print_basic_orbits();
 		}
 }
-
-
