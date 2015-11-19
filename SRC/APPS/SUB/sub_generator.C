@@ -227,7 +227,7 @@ void sub_generator::init(int argc, const char **argv)
 		cout << "A->f_has_strong_generators=" << A->f_has_strong_generators << endl;
 		}
 
-	gen->init(A_ind, A_ind, A->Strong_gens, gen->depth /* sz */, verbose_level);
+	gen->init(A, A_ind, A->Strong_gens, gen->depth /* sz */, verbose_level);
 
     if (f_v) {
 		cout << "sub_generator::init group set up, calling gen->init_check_func" << endl;
@@ -284,6 +284,7 @@ void sub_generator::print(ostream &ost, INT len, INT *S)
         ost << "------------------------------"<<endl;
 		}
 }
+
 
 void sub_generator::main()
 {

@@ -1,7 +1,7 @@
-DISCRETA_CPP = /usr/bin/g++
-CPPFLAGS = -Wall
+DISCRETA_CPP = /usr/bin/g++ 
+CPPFLAGS = -Wall -g
 LIB = 
-LFLAGS = -lm
+LFLAGS = -lm 
 
 
 all: galois action incidence snakesandladders discreta toplevel

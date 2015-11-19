@@ -15,7 +15,7 @@ LFLAGS = -lm
 all: sub.out
 
 sub.out:  sub.C sub_generator.o ;
-	$(DISCRETA_CPP)  sub.C sub_generator.o $(CPPFLAGS) $(LIB) $(LFLAGS) -o $@
+	$(DISCRETA_CPP)  sub.C sub_generator.o $(CPPFLAGS) $(LIB) $(LFLAGS) -g -o $@
 
 
 
